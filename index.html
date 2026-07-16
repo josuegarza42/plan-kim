@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Un plan pensado para Kimberly — CDMX y una escapada, agosto 2026." />
+<title>Para Kimberly · CDMX + escapada · Agosto 2026</title>
+<style>
+  :root {
+    --bg: #0e0b12;
+    --bg-soft: #16111d;
+    --card: #1c1626;
+    --card-2: #241b30;
+    --ink: #f4eef7;
+    --ink-soft: #c8bcd6;
+    --muted: #9385a6;
+    --line: #33283f;
+    --rose: #ff6f91;
+    --rose-soft: #ffa8bd;
+    --gold: #f5c26b;
+    --teal: #6bd0c4;
+    --violet: #b28dff;
+    --shadow: 0 18px 50px rgba(0,0,0,.45);
+    --radius: 20px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1200px 700px at 15% -5%, #2a1830 0%, transparent 55%),
+                radial-gradient(1000px 600px at 100% 0%, #1a2530 0%, transparent 50%),
+                var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 22px; }
+  h1,h2,h3 { line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    min-height: 92vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 0 60px; position: relative;
+  }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+    font-size: 13px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--rose-soft); background: rgba(255,111,145,.1);
+    border: 1px solid rgba(255,111,145,.25); padding: 7px 14px; border-radius: 999px;
+    margin-bottom: 26px;
+  }
+  .hero h1 { font-size: clamp(38px, 7vw, 72px); margin-bottom: 20px; }
+  .hero h1 .grad {
+    background: linear-gradient(115deg, var(--rose) 0%, var(--gold) 55%, var(--teal) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero p.lead { font-size: clamp(17px, 2.4vw, 21px); color: var(--ink-soft); max-width: 620px; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .chip {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 12px 16px; font-size: 14px; color: var(--ink-soft);
+  }
+  .chip b { color: var(--ink); font-weight: 600; }
+  .scroll-cta { margin-top: 44px; display: inline-flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; }
+  .scroll-cta .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rose); animation: pulse 1.8s infinite; }
+  @keyframes pulse { 0%,100%{opacity:.4; transform:scale(1)} 50%{opacity:1; transform:scale(1.5)} }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding: 56px 0; }
+  .sec-head { margin-bottom: 34px; }
+  .sec-head .eyebrow { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .sec-head h2 { font-size: clamp(26px, 4vw, 40px); margin-top: 8px; }
+  .sec-head p { color: var(--muted); margin-top: 10px; max-width: 640px; }
+
+  /* imperdibles */
+  .must-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .must {
+    position: relative; border-radius: var(--radius); overflow: hidden; min-height: 260px;
+    padding: 26px; display: flex; flex-direction: column; justify-content: flex-end;
+    border: 1px solid var(--line); box-shadow: var(--shadow);
+  }
+  .must.xochi { background: linear-gradient(180deg, rgba(14,11,18,.15) 0%, rgba(14,11,18,.85) 100%), linear-gradient(135deg,#2c7a6b,#155e75); }
+  .must.teoti { background: linear-gradient(180deg, rgba(14,11,18,.15) 0%, rgba(14,11,18,.85) 100%), linear-gradient(135deg,#b45309,#7c2d12); }
+  .must .tag { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.85); }
+  .must h3 { font-size: 27px; margin: 8px 0 6px; }
+  .must p { color: rgba(255,255,255,.9); font-size: 15px; }
+  .must .badge { position: absolute; top: 18px; right: 18px; background: rgba(0,0,0,.35); backdrop-filter: blur(6px); border:1px solid rgba(255,255,255,.2); border-radius: 999px; padding: 6px 12px; font-size: 12px; }
+
+  /* timeline */
+  .timeline { position: relative; padding-left: 30px; }
+  .timeline::before { content:""; position:absolute; left: 9px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(var(--rose), var(--gold), var(--teal)); border-radius: 2px; }
+  .day { position: relative; margin-bottom: 26px; }
+  .day::before { content:""; position:absolute; left: -30px; top: 4px; width: 20px; height: 20px; border-radius: 50%; background: var(--bg); border: 3px solid var(--rose); }
+  .day.d2::before { border-color: var(--gold); }
+  .day.d3::before { border-color: var(--teal); }
+  .day-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; }
+  .day-card .daylabel { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .day-card h3 { font-size: 20px; margin: 4px 0 12px; }
+  .slot { display: flex; gap: 12px; padding: 8px 0; border-top: 1px dashed var(--line); }
+  .slot:first-of-type { border-top: none; }
+  .slot .time { flex: 0 0 84px; color: var(--gold); font-size: 13px; font-weight: 600; padding-top: 2px; }
+  .slot .what b { color: var(--ink); }
+  .slot .what span { display:block; color: var(--muted); font-size: 14px; }
+  .heart-note { margin-top: 12px; font-size: 14px; color: var(--rose-soft); background: rgba(255,111,145,.08); border-left: 3px solid var(--rose); padding: 10px 14px; border-radius: 0 10px 10px 0; }
+
+  /* escapada cards */
+  .esc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .esc {
+    background: linear-gradient(180deg, var(--card-2), var(--card)); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column;
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .esc { cursor: pointer; position: relative; }
+  .esc:hover { transform: translateY(-4px); border-color: var(--rose); box-shadow: var(--shadow); }
+  .esc.selected { border-color: var(--teal); box-shadow: 0 0 0 2px var(--teal) inset, var(--shadow); }
+  .esc .check {
+    position: absolute; top: 16px; right: 16px; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--teal); color: #04210f; display: none; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: 800; box-shadow: 0 4px 12px rgba(107,208,196,.4);
+  }
+  .esc.selected .check { display: flex; }
+  .esc .picktip { margin-top: 10px; font-size: 12px; color: var(--muted); text-align: center; opacity: .8; }
+  .esc.selected .picktip { color: var(--teal); opacity: 1; }
+  .esc .rank { font-size: 12px; letter-spacing:.12em; text-transform: uppercase; color: var(--muted); }
+  .esc h3 { font-size: 23px; margin: 6px 0 2px; }
+  .esc .vibe { color: var(--rose-soft); font-size: 14px; margin-bottom: 14px; }
+  .esc ul { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 16px; }
+  .esc li { display:flex; gap: 10px; font-size: 14px; color: var(--ink-soft); }
+  .esc li .ic { flex: 0 0 18px; }
+  .esc .meta { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .esc .pill { font-size: 12px; background: rgba(255,255,255,.05); border: 1px solid var(--line); border-radius: 999px; padding: 5px 11px; color: var(--ink-soft); }
+  .esc .pill.rec { background: rgba(107,208,196,.12); border-color: rgba(107,208,196,.4); color: var(--teal); }
+
+  /* budget */
+  .budget { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+  .budget h3 { font-size: 20px; margin-bottom: 6px; }
+  .budget .sub { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+  .brow { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 12px 0; border-bottom: 1px dashed var(--line); align-items: center; }
+  .brow:last-of-type { border-bottom: none; }
+  .brow .lbl { color: var(--ink-soft); font-size: 15px; }
+  .brow .lbl span { display:block; color: var(--muted); font-size: 13px; }
+  .brow .amt { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--gold); }
+  .btotal { display:flex; justify-content: space-between; align-items:center; margin-top: 18px; padding-top: 18px; border-top: 2px solid var(--line); }
+  .btotal .t { font-size: 15px; color: var(--ink-soft); }
+  .btotal .n { font-size: 26px; font-weight: 700; color: var(--teal); font-variant-numeric: tabular-nums; }
+  .bar { height: 10px; border-radius: 999px; background: var(--bg-soft); overflow:hidden; margin-top: 4px; display:flex; }
+  .bar i { display:block; height:100%; }
+
+  /* tips */
+  .tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tip { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+  .tip .ico { font-size: 22px; margin-bottom: 8px; }
+  .tip h4 { font-size: 16px; margin-bottom: 6px; }
+  .tip p { font-size: 14px; color: var(--muted); }
+
+  /* soundtrack */
+  .beats { background: linear-gradient(160deg, #14101c, #0f0b14); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; box-shadow: var(--shadow); }
+  .beats-head { display:flex; align-items:center; justify-content:center; padding: 20px 18px 14px; }
+  .vs { display:flex; align-items:center; gap: 14px; }
+  .team { display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border-radius:999px; font-size:13px; font-weight:700; }
+  .team.drake { background: rgba(245,194,107,.14); color: var(--gold); border:1px solid rgba(245,194,107,.35); }
+  .team.kanye { background: rgba(178,141,255,.14); color: var(--violet); border:1px solid rgba(178,141,255,.35); }
+  .vs .x { color: var(--muted); font-size: 13px; letter-spacing:.1em; }
+  .track { display:flex; align-items:center; gap: 13px; padding: 13px 16px; border-radius: 12px; text-decoration:none; transition: background .15s ease, transform .15s ease; }
+  .track:hover { background: rgba(255,255,255,.05); transform: translateX(3px); }
+  .track .num { color: var(--muted); font-size: 13px; width: 16px; font-variant-numeric: tabular-nums; }
+  .track .artist { flex: 0 0 58px; text-align:center; font-size: 10px; letter-spacing:.06em; text-transform:uppercase; padding: 5px 0; border-radius: 7px; font-weight:800; }
+  .track .artist.drake { background: rgba(245,194,107,.15); color: var(--gold); }
+  .track .artist.kanye { background: rgba(178,141,255,.15); color: var(--violet); }
+  .track .tinfo { flex: 1 1 auto; min-width: 0; }
+  .track .tinfo b { color: var(--ink); display:block; font-size:15px; }
+  .track .tinfo span { color: var(--muted); font-size: 13px; }
+  .track .play { flex:0 0 auto; width: 34px; height: 34px; border-radius: 50%; background: #1db954; color:#04210f; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; }
+  .beats-foot { padding: 12px 18px 16px; color: var(--muted); font-size: 13px; text-align:center; }
+
+  /* whatsapp box */
+  .mail {
+    background: linear-gradient(135deg, rgba(37,211,102,.12), rgba(107,208,196,.1));
+    border: 1px solid rgba(37,211,102,.3); border-radius: var(--radius); padding: 32px; text-align: center;
+  }
+  .mail h2 { font-size: 26px; margin-bottom: 8px; }
+  .mail p { color: var(--ink-soft); margin-bottom: 20px; }
+  .mail .pickbox {
+    max-width: 520px; margin: 0 auto 18px; background: var(--bg); border: 1px dashed var(--line);
+    border-radius: 14px; padding: 16px; font-size: 15px; color: var(--muted);
+  }
+  .mail .pickbox b { color: var(--teal); }
+  .mail form { display:flex; flex-direction: column; gap: 12px; max-width: 520px; margin: 0 auto; }
+  .mail textarea {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 16px; color: var(--ink); font-size: 15px; outline: none; resize: vertical;
+    min-height: 84px; font-family: inherit;
+  }
+  .mail textarea:focus { border-color: #25d366; }
+  .btn {
+    background: linear-gradient(115deg, #25d366, #128c7e); color: #ffffff; border: none;
+    border-radius: 12px; padding: 16px 24px; font-size: 16px; font-weight: 700; cursor: pointer;
+    transition: transform .15s ease, filter .15s ease; display: inline-flex; align-items: center;
+    justify-content: center; gap: 10px; text-decoration: none;
+  }
+  .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+  .btn.disabled { opacity: .55; cursor: not-allowed; transform: none; pointer-events: none; }
+  .mail .status { margin-top: 14px; font-size: 14px; min-height: 20px; }
+  .status.ok { color: var(--teal); }
+  .status.err { color: var(--rose-soft); }
+
+  footer { padding: 40px 0 60px; text-align: center; color: var(--muted); font-size: 13px; }
+  footer .heart { color: var(--rose); }
+
+  @media (max-width: 720px) {
+    .must-grid, .esc-grid, .tips-grid { grid-template-columns: 1fr; }
+    .hero { min-height: 88vh; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <span class="kicker">◆ Un plan pensado para Kimberly · Agosto 2026</span>
+      <h1>Kimberly, una semana <span class="grad">para nosotros</span><br/>en México.</h1>
+      <p class="lead">Empezamos por tus dos imperdibles — <b>Xochimilco</b> y <b>Teotihuacán</b> — y de ahí nos escapamos a un lugar nuevo, juntos, sin prisa.</p>
+      <div class="hero-meta">
+        <div class="chip"><b>7 días</b> · 3 en CDMX + 4 de escapada</div>
+        <div class="chip"><b>Primera quincena</b> de agosto</div>
+        <div class="chip">Desde <b>Los Ángeles</b> ✈ Ciudad de México</div>
+        <div class="chip">Para <b>Kimberly</b>, con cariño ♥</div>
+        <div class="chip">Con banda sonora 🦉 Drake × Kanye 🐻</div>
+      </div>
+      <a class="scroll-cta" href="#imperdibles"><span class="dot"></span> Desliza para ver el plan</a>
+    </div>
+  </header>
+
+  <!-- IMPERDIBLES -->
+  <section id="imperdibles">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Tus dos imperdibles</div>
+        <h2>Lo que dijiste que no te puedes perder</h2>
+        <p>Estos dos son el corazón de los días en la ciudad. Todo lo demás gira alrededor de que estos dos salgan perfectos.</p>
+      </div>
+      <div class="must-grid">
+        <div class="must xochi">
+          <span class="badge">Día 3 · mañana</span>
+          <span class="tag">Ciudad de México</span>
+          <h3>Xochimilco</h3>
+          <p>Una trajinera para los dos, música, comida y el agua tranquila. Salir temprano para tenerlo más vacío y con mejor luz.</p>
+        </div>
+        <div class="must teoti">
+          <span class="badge">Día 2 · amanecer</span>
+          <span class="tag">Estado de México</span>
+          <h3>Teotihuacán</h3>
+          <p>Las pirámides al amanecer. Opción soñada: verlas desde un globo aerostático mientras sale el sol. Difícil de superar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CDMX TIMELINE -->
+  <section id="cdmx">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Parte 1 · Ciudad de México</div>
+        <h2>Tres días en la ciudad</h2>
+        <p>Ritmo cómodo: un imperdible fuerte por día, mañanas con calma y noches para nosotros. Base sugerida: hotel en <b>Roma / Condesa</b> (bonito, seguro y a pie de todo).</p>
+      </div>
+
+      <div class="timeline">
+        <!-- DAY 1 -->
+        <div class="day d1">
+          <div class="day-card">
+            <div class="daylabel">Día 1 · Llegada + Centro</div>
+            <h3>Aterrizar y enamorarse de la ciudad</h3>
+            <div class="slot"><div class="time">Mediodía</div><div class="what"><b>Llegada al AICM + check-in</b><span>Instalarnos, soltar maletas, respirar.</span></div></div>
+            <div class="slot"><div class="time">3:00 pm</div><div class="what"><b>Centro Histórico a pie</b><span>Zócalo, Catedral, Palacio de Bellas Artes.</span></div></div>
+            <div class="slot"><div class="time">7:00 pm</div><div class="what"><b>Atardecer en la Torre Latino</b><span>La mejor vista panorámica de la ciudad al caer el sol.</span></div></div>
+            <div class="slot"><div class="time">9:00 pm</div><div class="what"><b>Cena en la Roma</b><span>Zona de cafés y restaurantes, ambiente relajado.</span></div></div>
+            <div class="heart-note">Día suave a propósito: viene de un vuelo, mejor no saturarla el primer día.</div>
+          </div>
+        </div>
+
+        <!-- DAY 2 -->
+        <div class="day d2">
+          <div class="day-card">
+            <div class="daylabel">Día 2 · Teotihuacán</div>
+            <h3>Las pirámides al amanecer</h3>
+            <div class="slot"><div class="time">5:30 am</div><div class="what"><b>Salida temprano hacia Teotihuacán</b><span>~1 hora en auto/tour desde la ciudad.</span></div></div>
+            <div class="slot"><div class="time">6:30 am</div><div class="what"><b>Globo aerostático al amanecer (opcional ⭐)</b><span>La experiencia estrella. Reservar con semanas de anticipación.</span></div></div>
+            <div class="slot"><div class="time">9:30 am</div><div class="what"><b>Recorrer la Calzada de los Muertos</b><span>Pirámides del Sol y la Luna con calma.</span></div></div>
+            <div class="slot"><div class="time">1:00 pm</div><div class="what"><b>Comida en una gruta / terraza local</b><span>Restaurantes clásicos de la zona con vista.</span></div></div>
+            <div class="slot"><div class="time">Tarde</div><div class="what"><b>Volver, descansar y noche en Coyoacán</b><span>Plazas, jardines y un mezcal tranquilo.</span></div></div>
+            <div class="heart-note">Madrugar cuesta, pero verlo juntos con la primera luz es de esos recuerdos que no se olvidan.</div>
+          </div>
+        </div>
+
+        <!-- DAY 3 -->
+        <div class="day d3">
+          <div class="day-card">
+            <div class="daylabel">Día 3 · Xochimilco + despedida de la ciudad</div>
+            <h3>Trajinera y últimos antojos</h3>
+            <div class="slot"><div class="time">9:00 am</div><div class="what"><b>Xochimilco temprano</b><span>Trajinera privada, más vacío y con mejor luz para fotos.</span></div></div>
+            <div class="slot"><div class="time">1:00 pm</div><div class="what"><b>Coyoacán: Casa Azul (Frida Kahlo)</b><span>Camino de regreso, comprar boletos en línea antes.</span></div></div>
+            <div class="slot"><div class="time">5:00 pm</div><div class="what"><b>Chapultepec o mercado de artesanías</b><span>Según cómo andemos de energía.</span></div></div>
+            <div class="slot"><div class="time">Noche</div><div class="what"><b>Cena especial de despedida de la ciudad</b><span>Preparar maletas: mañana volamos a la escapada.</span></div></div>
+            <div class="heart-note">Con esto quedan cubiertos tus dos imperdibles. Lo demás es puro extra.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESCAPADA -->
+  <section id="escapada">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Parte 2 · La escapada (4 días)</div>
+        <h2>El lugar nuevo — Kimberly, tú eliges cuál</h2>
+        <p>Cuatro destinos que valen la pena, todos alcanzables con vuelo a Cancún y pensados en presupuesto económico. Compáralos y me dices cuál te late para cerrarlo.</p>
+      </div>
+
+      <div class="esc-grid">
+        <!-- Holbox -->
+        <div class="esc" data-plan="Holbox 🏝️ (isla romántica)">
+          <div class="check">✓</div>
+          <div class="rank">Opción 1 · la más romántica</div>
+          <h3>Holbox 🏝️</h3>
+          <div class="vibe">Isla sin autos · atardeceres · íntimo</div>
+          <ul>
+            <li><span class="ic">🦈</span> En agosto hay <b>tiburón ballena</b> (nadar con ellos).</li>
+            <li><span class="ic">🌅</span> Atardeceres de portada, playas casi vacías.</li>
+            <li><span class="ic">🚗</span> Vuelo a Cancún + ~2 h en van + ferry a la isla.</li>
+          </ul>
+          <div class="meta">
+            <span class="pill">Más traslado</span>
+            <span class="pill">Muy íntimo</span>
+            <span class="pill rec">Ideal para sorprender</span>
+          </div>
+          <div class="picktip">Toca para elegir este ♥</div>
+        </div>
+
+        <!-- Riviera Maya -->
+        <div class="esc" data-plan="Riviera Maya / Tulum 🌊">
+          <div class="check">✓</div>
+          <div class="rank">Opción 2 · la más fácil</div>
+          <h3>Riviera Maya / Tulum 🌊</h3>
+          <div class="vibe">Playas turquesa · cenotes · ruinas</div>
+          <ul>
+            <li><span class="ic">✈️</span> Vuelo directo a Cancún, <b>logística sencilla</b>.</li>
+            <li><span class="ic">💦</span> Cenotes, ruinas de Tulum frente al mar.</li>
+            <li><span class="ic">🎉</span> Mucho que hacer, para todos los gustos.</li>
+          </ul>
+          <div class="meta">
+            <span class="pill rec">Menos complicaciones</span>
+            <span class="pill">Más turístico</span>
+          </div>
+          <div class="picktip">Toca para elegir este ♥</div>
+        </div>
+
+        <!-- Bacalar -->
+        <div class="esc" data-plan="Bacalar 💙 (laguna de 7 colores)">
+          <div class="check">✓</div>
+          <div class="rank">Opción 3 · la más tranquila</div>
+          <h3>Bacalar 💙</h3>
+          <div class="vibe">Laguna de 7 colores · calma · desconectar</div>
+          <ul>
+            <li><span class="ic">🛶</span> Laguna turquesa increíble, kayak al amanecer.</li>
+            <li><span class="ic">🍃</span> Menos turística, muy romántica y relajada.</li>
+            <li><span class="ic">🚗</span> Vuelo a Cancún/Chetumal + carretera (~4 h desde CUN).</li>
+          </ul>
+          <div class="meta">
+            <span class="pill">Para desconectar</span>
+            <span class="pill">Más lejos por tierra</span>
+          </div>
+          <div class="picktip">Toca para elegir este ♥</div>
+        </div>
+
+        <!-- Mérida -->
+        <div class="esc" data-plan="Mérida + Valladolid 🏛️">
+          <div class="check">✓</div>
+          <div class="rank">Opción 4 · la más cultural</div>
+          <h3>Mérida + Valladolid 🏛️</h3>
+          <div class="vibe">Coloniales · cenotes · Chichén Itzá</div>
+          <ul>
+            <li><span class="ic">🏰</span> Ciudades coloniales preciosas y seguras.</li>
+            <li><span class="ic">🌮</span> De la mejor comida del país.</li>
+            <li><span class="ic">🗿</span> Chichén Itzá y cenotes escondidos.</li>
+          </ul>
+          <div class="meta">
+            <span class="pill">Cultura + comida</span>
+            <span class="pill">Poco de playa</span>
+          </div>
+          <div class="picktip">Toca para elegir este ♥</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUDGET -->
+  <section id="presupuesto">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Presupuesto · económico</div>
+        <h2>Cuánto cuesta la escapada (para los dos)</h2>
+        <p>Estimado para 3–4 días, dos personas, reservando con anticipación. Los números son aproximados en pesos mexicanos y sirven de guía, no de cotización cerrada.</p>
+      </div>
+      <div class="budget">
+        <h3>Escapada · 4 días · 2 personas</h3>
+        <div class="sub">Ejemplo base: Riviera Maya (la de logística más simple).</div>
+        <div class="brow"><div class="lbl">Vuelos redondos CDMX ⇄ Cancún<span>2 personas, comprando con semanas de anticipación</span></div><div class="amt">$5,000</div></div>
+        <div class="brow"><div class="lbl">Hospedaje boutique / sencillo<span>3 noches</span></div><div class="amt">$4,500</div></div>
+        <div class="brow"><div class="lbl">Comidas y antojos<span>~$500/día los dos</span></div><div class="amt">$2,000</div></div>
+        <div class="brow"><div class="lbl">Actividades (cenote, tour, entradas)<span>1–2 experiencias clave</span></div><div class="amt">$1,500</div></div>
+        <div class="brow"><div class="lbl">Traslados locales<span>Aeropuerto, taxis, van</span></div><div class="amt">$1,000</div></div>
+        <div class="btotal"><div class="t">Total aproximado</div><div class="n">≈ $14,000 MXN</div></div>
+        <div class="bar">
+          <i style="width:36%; background:var(--rose)"></i>
+          <i style="width:32%; background:var(--gold)"></i>
+          <i style="width:14%; background:var(--teal)"></i>
+          <i style="width:11%; background:var(--violet)"></i>
+          <i style="width:7%; background:var(--rose-soft)"></i>
+        </div>
+        <p style="color:var(--muted); font-size:13px; margin-top:14px;">Holbox y Bacalar suben un poco por los traslados; Mérida suele ser la más económica en hospedaje. Reservar vuelos temprano es lo que más mueve el total.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section id="tips">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Detalles que cuidan el plan</div>
+        <h2>Para que todo salga redondo</h2>
+      </div>
+      <div class="tips-grid">
+        <div class="tip"><div class="ico">🎈</div><h4>Reserva el globo YA</h4><p>El globo en Teotihuacán y las trajineras privadas en Xochimilco se agotan. Reservar con semanas de anticipación.</p></div>
+        <div class="tip"><div class="ico">🌦️</div><h4>Agosto = lluvia por la tarde</h4><p>En CDMX suele llover en la tarde/noche. Por eso los imperdibles van en la mañana.</p></div>
+        <div class="tip"><div class="ico">✈️</div><h4>Vuelos entre semana</h4><p>CDMX ⇄ Cancún es más barato martes/miércoles. Comprar temprano baja mucho el precio.</p></div>
+        <div class="tip"><div class="ico">📄</div><h4>Documentos de ella</h4><p>Viene de EE. UU.: confirmar pasaporte vigente y FMM/estancia en regla para vuelos internos.</p></div>
+        <div class="tip"><div class="ico">💵</div><h4>Efectivo a la mano</h4><p>Trajineras, propinas y mercados a veces son solo efectivo. Llevar pesos.</p></div>
+        <div class="tip"><div class="ico">❤️</div><h4>Deja huecos libres</h4><p>Lo mejor del viaje suele pasar en los ratos sin agenda. No llenar cada hora.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOUNDTRACK -->
+  <section id="soundtrack">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">La banda sonora del viaje</div>
+        <h2>Team Drake 🦉 × Team Kanye 🐻</h2>
+        <p>Sé que eres súper fan de Drake y los dos amamos a Kanye. Así que cada momento del viaje tiene su canción. Toca cualquiera para abrirla en Spotify. 🎧</p>
+      </div>
+
+      <div class="beats">
+        <div class="beats-head">
+          <div class="vs">
+            <span class="team drake">🦉 Team Drake (tú)</span>
+            <span class="x">×</span>
+            <span class="team kanye">🐻 Team Kanye (los dos)</span>
+          </div>
+        </div>
+
+        <a class="track" href="https://open.spotify.com/search/Drake%20Passionfruit" target="_blank" rel="noopener">
+          <span class="num">1</span><span class="artist drake">Drake</span>
+          <div class="tinfo"><b>Passionfruit</b><span>Para el vuelo — cuando por fin vienes a México ✈️</span></div>
+          <span class="play">▶</span>
+        </a>
+        <a class="track" href="https://open.spotify.com/search/Kanye%20West%20Family%20Business" target="_blank" rel="noopener">
+          <span class="num">2</span><span class="artist kanye">Kanye</span>
+          <div class="tinfo"><b>Family Business</b><span>Llegando a CDMX, primer día juntos 🏙️</span></div>
+          <span class="play">▶</span>
+        </a>
+        <a class="track" href="https://open.spotify.com/search/Kanye%20West%20Ultralight%20Beam" target="_blank" rel="noopener">
+          <span class="num">3</span><span class="artist kanye">Kanye</span>
+          <div class="tinfo"><b>Ultralight Beam</b><span>Teotihuacán al amanecer 🎈</span></div>
+          <span class="play">▶</span>
+        </a>
+        <a class="track" href="https://open.spotify.com/search/Drake%20Marvins%20Room" target="_blank" rel="noopener">
+          <span class="num">4</span><span class="artist drake">Drake</span>
+          <div class="tinfo"><b>Marvin's Room</b><span>Noche de mezcal en Coyoacán 🌙</span></div>
+          <span class="play">▶</span>
+        </a>
+        <a class="track" href="https://open.spotify.com/search/Drake%20Hold%20On%20Were%20Going%20Home" target="_blank" rel="noopener">
+          <span class="num">5</span><span class="artist drake">Drake</span>
+          <div class="tinfo"><b>Hold On, We're Going Home</b><span>Trajinera en Xochimilco 🚣</span></div>
+          <span class="play">▶</span>
+        </a>
+        <a class="track" href="https://open.spotify.com/search/Kanye%20West%20Good%20Life" target="_blank" rel="noopener">
+          <span class="num">6</span><span class="artist kanye">Kanye</span>
+          <div class="tinfo"><b>Good Life</b><span>Volando a la escapada, la mejor parte 🌊</span></div>
+          <span class="play">▶</span>
+        </a>
+        <a class="track" href="https://open.spotify.com/search/Drake%20Rihanna%20Take%20Care" target="_blank" rel="noopener">
+          <span class="num">7</span><span class="artist drake">Drake</span>
+          <div class="tinfo"><b>Take Care</b><span>Atardecer en la playa, solo nosotros 🌅</span></div>
+          <span class="play">▶</span>
+        </a>
+        <a class="track" href="https://open.spotify.com/search/Kanye%20West%20Never%20Let%20Me%20Down" target="_blank" rel="noopener">
+          <span class="num">8</span><span class="artist kanye">Kanye</span>
+          <div class="tinfo"><b>Never Let Me Down</b><span>El cierre — que esto apenas empiece ♥</span></div>
+          <span class="play">▶</span>
+        </a>
+
+        <div class="beats-foot">8 canciones · Drake para ti, Kanye para los dos 🦉🐻</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP -->
+  <section id="elige">
+    <div class="wrap">
+      <div class="mail">
+        <h2>💬 Kimberly, ¿cuál plan te late más?</h2>
+        <p>Elige arriba tu escapada favorita (toca una de las 4 tarjetas) y mándasela a Josué por WhatsApp. Si quieres, déjale un mensajito ♥</p>
+        <div class="pickbox" id="pickbox">Aún no has elegido escapada — toca una tarjeta de arriba 👆</div>
+        <form id="waForm">
+          <textarea id="nota" placeholder="Un mensajito para Josué (opcional)… ♥"></textarea>
+          <a class="btn disabled" id="waBtn" href="#" target="_blank" rel="noopener">
+            <span>💬</span> Enviar mi elección por WhatsApp
+          </a>
+        </form>
+        <div class="status" id="status"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      Hecho con <span class="heart">♥</span> para Kimberly · un viaje que apenas empieza · Agosto 2026
+    </div>
+  </footer>
+
+<script>
+  // Número de WhatsApp de Josué (formato internacional, solo dígitos).
+  // Ej. México: 52 + 10 dígitos  ->  "5218112345678"
+  const JOSUE_WHATSAPP = "524446586361";
+
+  const cards = document.querySelectorAll('.esc');
+  const pickbox = document.getElementById('pickbox');
+  const waBtn = document.getElementById('waBtn');
+  const nota = document.getElementById('nota');
+  const statusEl = document.getElementById('status');
+  let elegido = null;
+
+  function buildLink() {
+    if (!elegido) {
+      waBtn.classList.add('disabled');
+      waBtn.removeAttribute('href');
+      return;
+    }
+    let msg = `¡Hola Josué! 💕 Ya vi el plan que armaste para nosotros y me encantó.\n\n`;
+    msg += `De la escapada, yo elijo: ${elegido} ✨\n`;
+    const extra = nota.value.trim();
+    if (extra) msg += `\n${extra}`;
+    msg += `\n\n— Kimberly`;
+
+    const encoded = encodeURIComponent(msg);
+    const href = JOSUE_WHATSAPP && !JOSUE_WHATSAPP.includes('__')
+      ? `https://wa.me/${JOSUE_WHATSAPP}?text=${encoded}`
+      : `https://wa.me/?text=${encoded}`; // sin número: abre WhatsApp para elegir contacto
+    waBtn.setAttribute('href', href);
+    waBtn.classList.remove('disabled');
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      cards.forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      elegido = card.getAttribute('data-plan');
+      pickbox.innerHTML = `Tu elección: <b>${elegido}</b> 🎉`;
+      statusEl.className = 'status ok';
+      statusEl.textContent = '¡Perfecto! Ahora toca el botón verde para mandárselo a Josué. ♥';
+      buildLink();
+    });
+  });
+
+  nota.addEventListener('input', buildLink);
+</script>
+</body>
+</html>
