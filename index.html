@@ -289,6 +289,21 @@
     padding: 11px 15px; border-radius: 0 10px 10px 0;
   }
 
+  /* ---------- CÓMO NOS MOVEMOS (por día) ---------- */
+  .moves { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 14px; }
+  .mv {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600;
+    background: rgba(255,255,255,.05); border: 1px solid var(--line);
+    color: var(--ink-soft); border-radius: 999px; padding: 4px 11px;
+    transition: color .9s ease;
+  }
+  .mv .mvi { font-size: 13px; }
+  /* con carro: resaltado, para verlo de un golpe */
+  .mv.car  { background: rgba(245,194,107,.15); border-color: rgba(245,194,107,.45); color: var(--gold); }
+  .mv.cart { background: rgba(107,208,196,.14); border-color: rgba(107,208,196,.42); color: var(--teal); }
+  .mv.nocar { opacity: .7; }
+
   /* ---------- OPCIONALES ---------- */
   .opt-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .act {
@@ -520,6 +535,7 @@
           <div class="day-card">
             <div class="daylabel">Día 1 · Miércoles 5 de agosto</div>
             <h3>Llegas — y celebramos tu cumpleaños 🎂</h3>
+            <div class="moves"><span class="mv"><span class="mvi">🚕</span> Uber / taxi en la ciudad</span></div>
             <div class="slot"><div class="time">4:50 pm</div><div class="what"><b>Aterrizas en CDMX</b><span>Aeroméxico AM647. Ahí estoy esperándote.</span></div></div>
             <div class="slot"><div class="time">6:00 pm</div><div class="what"><b>A casa a dejar maletas</b><span>Nos quedamos en mi casa, en la Benito Juárez.</span></div></div>
             <div class="slot"><div class="time">Noche</div><div class="what"><b>Cena elegante en el World Trade Center</b><span>Ya está reservada. Tu cumple fue el 2, pero lo festejamos como se debe. ✨</span></div></div>
@@ -532,6 +548,7 @@
           <div class="day-card">
             <div class="daylabel">Día 2 · Jueves 6 de agosto</div>
             <h3>Teotihuacán, las pirámides 🛕</h3>
+            <div class="moves"><span class="mv"><span class="mvi">🚗</span> Mi coche desde la casa</span></div>
             <div class="slot"><div class="time">7:00 am</div><div class="what"><b>Salimos hacia Teotihuacán</b><span>~1 hora de camino. Llegamos a la apertura: sin gente y sin el calor de mediodía.</span></div></div>
             <div class="slot"><div class="time">8:30 am</div><div class="what"><b>Calzada de los Muertos, Sol y Luna</b><span>Con calma, sin prisa, todas las fotos que quieras.</span></div></div>
             <div class="slot"><div class="time">1:00 pm</div><div class="what"><b>Comida en una gruta de la zona</b><span>Clásico del lugar: se come dentro de una cueva.</span></div></div>
@@ -545,6 +562,7 @@
           <div class="day-card">
             <div class="daylabel">Día 3 · Viernes 7 de agosto</div>
             <h3>Trajinera de día, lucha libre de noche 🤼</h3>
+            <div class="moves"><span class="mv"><span class="mvi">🚗</span> Mi coche de día</span><span class="mv"><span class="mvi">🚕</span> Uber de noche (para brindar sin manejar)</span></div>
             <div class="slot"><div class="time">9:00 am</div><div class="what"><b>Xochimilco en trajinera</b><span>Temprano está más vacío y con mejor luz. Música, comida y el agua tranquila.</span><span class="opt">Opcional</span></div></div>
             <div class="slot"><div class="time">2:00 pm</div><div class="what"><b>Casa Azul de Frida Kahlo</b><span>De regreso, pasando por Coyoacán. Boletos en línea con anticipación.</span><span class="opt">Opcional</span></div></div>
             <div class="slot"><div class="time">5:00 pm</div><div class="what"><b>Siesta obligatoria</b><span>Porque la noche viene con todo.</span></div></div>
@@ -559,6 +577,7 @@
           <div class="day-card">
             <div class="daylabel">Día 4 · Sábado 8 de agosto</div>
             <h3>Nos vamos a la isla 🏝️</h3>
+            <div class="moves"><span class="mv nocar"><span class="mvi">🚌</span> Camión + ferry · sin carro</span></div>
             <div class="slot"><div class="time">Temprano</div><div class="what"><b>Vuelo CDMX → Cancún</b><span>El primero de la mañana, para aprovechar el día.</span></div></div>
             <div class="slot"><div class="time">Mediodía</div><div class="what"><b>Cancún → Chiquilá</b><span>~3 h directo. Vemos pasar la selva.</span></div></div>
             <div class="slot"><div class="time">Tarde</div><div class="what"><b>Ferry a Holbox 🚤</b><span>~30 minutos cruzando. Aquí ya empieza a sentirse otra cosa.</span></div></div>
@@ -572,6 +591,7 @@
           <div class="day-card">
             <div class="daylabel">Día 5 · Domingo 9 de agosto</div>
             <h3>Tiburón ballena y nada más 🦈</h3>
+            <div class="moves"><span class="mv cart"><span class="mvi">🛺</span> Carrito de golf en la isla</span><span class="mv"><span class="mvi">🚲</span> Bicis</span></div>
             <div class="slot"><div class="time">6:00 am</div><div class="what"><b>Tour de tiburón ballena</b><span>Agosto es justo la temporada. Nadar junto al pez más grande del mundo — es enorme y completamente inofensivo.</span><span class="opt">Opcional</span></div></div>
             <div class="slot"><div class="time">1:00 pm</div><div class="what"><b>Regreso y comida en la isla</b><span>Pescado fresco, sin prisa.</span></div></div>
             <div class="slot"><div class="time">Tarde</div><div class="what"><b>Hamaca, playa y nada de agenda</b><span>Literalmente el plan es no tener plan.</span></div></div>
@@ -584,6 +604,7 @@
           <div class="day-card">
             <div class="daylabel">Día 6 · Lunes 10 de agosto</div>
             <h3>De la isla a Valladolid 🚗</h3>
+            <div class="moves"><span class="mv"><span class="mvi">🚤</span> Ferry + camión</span><span class="mv car"><span class="mvi">🚗</span> Recogemos el carro · día 1 de 3</span></div>
             <div class="slot"><div class="time">Mañana</div><div class="what"><b>Punta Cocos, última playa</b><span>El lado tranquilo de la isla, casi siempre vacío.</span></div></div>
             <div class="slot"><div class="time">Mediodía</div><div class="what"><b>Ferry de vuelta + camino a Valladolid</b><span>~2 h. Ahí recogemos el carro que será nuestro los próximos días.</span></div></div>
             <div class="slot"><div class="time">Tarde</div><div class="what"><b>Valladolid, pueblo mágico</b><span>Calzada de los Frailes, casas de colores, todo caminando.</span></div></div>
@@ -596,6 +617,7 @@
           <div class="day-card">
             <div class="daylabel">Día 7 · Martes 11 de agosto</div>
             <h3>Chichén Itzá y cenotes 🛕💦</h3>
+            <div class="moves"><span class="mv car"><span class="mvi">🚗</span> Carro todo el día · día 2 de 3</span></div>
             <div class="slot"><div class="time">8:00 am</div><div class="what"><b>Chichén Itzá justo en la apertura</b><span>Con carro llegamos antes que todos los tours. Es la diferencia entre disfrutarlo y sufrirlo.</span></div></div>
             <div class="slot"><div class="time">11:30 am</div><div class="what"><b>Cenote camino de regreso</b><span>Suytun (el del rayo de luz) o Ik Kil. Agua dulce, fría y transparente.</span><span class="opt">Opcional</span></div></div>
             <div class="slot"><div class="time">3:00 pm</div><div class="what"><b>Ek Balam</b><span>Otra zona arqueológica, casi vacía — y esta sí se puede escalar.</span><span class="opt">Opcional</span></div></div>
@@ -609,6 +631,7 @@
           <div class="day-card">
             <div class="daylabel">Día 8 · Miércoles 12 de agosto</div>
             <h3>Volvemos a la ciudad ✈️</h3>
+            <div class="moves"><span class="mv car"><span class="mvi">🚗</span> Carro hasta Cancún · día 3 de 3</span><span class="mv"><span class="mvi">🚕</span> Uber en CDMX</span></div>
             <div class="slot"><div class="time">Mañana</div><div class="what"><b>Valladolid → Cancún</b><span>~2 h manejando. Entregamos el carro en el aeropuerto.</span></div></div>
             <div class="slot"><div class="time">Tarde</div><div class="what"><b>Vuelo Cancún → CDMX</b><span>Dormimos en la ciudad.</span></div></div>
             <div class="heart-note">Regresamos un día antes a propósito: así, si un vuelo se retrasa, tu vuelo a Los Ángeles nunca está en riesgo.</div>
@@ -620,6 +643,7 @@
           <div class="day-card">
             <div class="daylabel">Día 9 · Jueves 13 de agosto</div>
             <h3>El último día 💔</h3>
+            <div class="moves"><span class="mv"><span class="mvi">🚗</span> Yo te llevo al aeropuerto</span></div>
             <div class="slot"><div class="time">Mañana</div><div class="what"><b>Sin agenda</b><span>Desayunar rico, caminar, o no hacer nada. Como quieras.</span></div></div>
             <div class="slot"><div class="time">3:30 pm</div><div class="what"><b>Al aeropuerto</b><span>Con tiempo, sin correr.</span></div></div>
             <div class="slot"><div class="time">7:05 pm</div><div class="what"><b>Tu vuelo a Los Ángeles</b><span>Y ya estaremos planeando el siguiente. ♥</span></div></div>
@@ -670,6 +694,14 @@
           <h4>🦈 Tiburón ballena</h4>
           <p>Agosto es la temporada exacta. Nadas al lado de un animal de 12 metros que solo come plancton. Es lo más caro del viaje y lo más difícil de olvidar.</p>
           <div class="cost">~$5,000 MXN los dos, aprox.</div>
+        </div>
+
+        <div class="act rv" data-act="Carrito de golf en Holbox 🛺">
+          <div class="box">✓</div>
+          <div class="when">Holbox · los dos días</div>
+          <h4>🛺 Carrito de golf</h4>
+          <p>En Holbox no hay autos: todo mundo se mueve en carrito de golf o bici. Rentar uno nos deja llegar a Punta Cocos y a las playas lejanas sin caminar bajo el sol.</p>
+          <div class="cost">~$1,600 MXN por día, aprox.</div>
         </div>
 
         <div class="act rv" data-act="Cenote (Suytun o Ik Kil) 💦">
@@ -724,7 +756,7 @@
           <ul>
             <li><span class="lic">🏠</span><div><b>Dónde dormimos en CDMX</b><span>Mi casa, en la Benito Juárez. Las 4 noches.</span></div></li>
             <li><span class="lic">🎂</span><div><b>Tu cena de cumpleaños</b><span>La del World Trade Center va por mi cuenta. Es tu regalo.</span></div></li>
-            <li><span class="lic">🚗</span><div><b>El carro y la gasolina</b><span>Yo manejo y yo lo pongo. Es mi terreno.</span></div></li>
+            <li><span class="lic">🚗</span><div><b>El carro y la gasolina</b><span>Los 3 días de Yucatán y mi coche en CDMX. Yo manejo y yo lo pongo.</span></div></li>
             <li><span class="lic">🗺️</span><div><b>Toda la organización</b><span>Reservas, horarios, rutas, tours. Tú solo llegas.</span></div></li>
           </ul>
         </div>
@@ -767,6 +799,7 @@
         <div class="tip rv"><div class="ico">🧴</div><h4>Bloqueador biodegradable</h4><p>En los cenotes y el tour de tiburón ballena lo exigen. El normal está prohibido — contamina el agua.</p></div>
         <div class="tip rv"><div class="ico">💵</div><h4>Efectivo a la mano</h4><p>Trajineras, Patrick Miller, propinas y muchos lugares de Holbox son solo efectivo.</p></div>
         <div class="tip rv"><div class="ico">📄</div><h4>Tu pasaporte</h4><p>Vigente, y guarda tu comprobante de entrada a México — lo piden en los vuelos internos.</p></div>
+        <div class="tip rv"><div class="ico">🚗</div><h4>Carro solo donde sirve</h4><p>En Holbox no entran autos, así que allá vamos en camión y ferry. El carro lo rentamos en Valladolid, justo los 3 días que sí lo manejamos.</p></div>
         <div class="tip rv"><div class="ico">❤️</div><h4>Huecos a propósito</h4><p>Hay días sin plan. No es descuido: lo mejor de los viajes casi siempre pasa en esos ratos.</p></div>
       </div>
     </div>
