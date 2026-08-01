@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
-  Plan de viaje para Kimberly · CDMX + Holbox + Yucatán · Agosto 2026
-  ------------------------------------------------------------------
+  Plan de viaje para Kimberly · CDMX + escapada (2 rutas a elegir) · Agosto 2026
+  ------------------------------------------------------------------------------
   Este archivo ES toda la página (HTML + CSS + JS en un solo lugar).
   En vivo: https://josuegarza42.github.io/plan-kim/  (GitHub Pages)
 
@@ -18,13 +18,20 @@
     Cada bloque grande tiene data-stage="city|beach|jungle". Un IntersectionObserver
     detecta cuál está a la mitad de la pantalla y pone ese valor en <body data-stage>.
     Eso cruza-desvanece las 3 capas .bg y cambia --accent con transiciones de CSS.
+
+  Cómo funciona el switcher de Ruta A/B (días 4–8, la escapada):
+    Mismo idioma que data-stage: <body data-ruta="a|b"> decide qué se ve, vía CSS
+    puro (body[data-ruta="a"] .only-b { display:none }). Cualquier bloque exclusivo
+    de una ruta lleva class="only-a" o "only-b"; lo compartido (días 1–3, día 9,
+    tarjetas de CDMX) no lleva ninguna. Ruta A es el default: si el JS falla, se ve
+    el plan de siempre. Los botones llaman setRuta('a'|'b') en el <script>.
   Documentación completa: ../README.md
 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Un plan pensado para Kimberly — CDMX, Holbox y Yucatán, agosto 2026." />
+<meta name="description" content="Un plan pensado para Kimberly — CDMX y el Caribe mexicano, agosto 2026." />
 <meta name="theme-color" content="#0e0b12" />
 <title>Para Kimberly · 5–13 de agosto 2026</title>
 <style>
@@ -70,6 +77,11 @@
     --card: rgba(41,26,17,.8);
     --card-2: rgba(53,34,21,.8);
   }
+
+  /* ---------- RUTA A/B: mostrar solo lo que aplica ---------- */
+  /* Mismo idioma que data-stage: un atributo en <body> decide qué se ve. */
+  body[data-ruta="a"] .only-b { display: none !important; }
+  body[data-ruta="b"] .only-a { display: none !important; }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -223,6 +235,21 @@
   /* ---------- REVELADO AL SCROLL ---------- */
   .rv { opacity: 0; transform: translateY(26px); transition: opacity .75s cubic-bezier(.2,.7,.3,1), transform .75s cubic-bezier(.2,.7,.3,1); }
   .rv.in { opacity: 1; transform: none; }
+
+  /* ---------- SWITCHER DE RUTA (A/B) ---------- */
+  .ruta-switch { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 30px; }
+  .ruta-pills {
+    display: inline-flex; background: rgba(0,0,0,.28); border: 1px solid var(--line);
+    border-radius: 999px; padding: 5px; gap: 4px;
+  }
+  .ruta-pill {
+    appearance: none; border: none; background: transparent; cursor: pointer;
+    color: var(--muted); font-size: 14.5px; font-weight: 700; font-family: inherit;
+    padding: 11px 20px; border-radius: 999px; transition: background .25s ease, color .25s ease;
+  }
+  .ruta-pill.active { background: var(--accent); color: #0e0b12; }
+  .ruta-diff { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; font-size: 13.5px; color: var(--muted); }
+  .ruta-diff b { color: var(--ink-soft); font-weight: 600; }
 
   /* ---------- RUTA ---------- */
   .route { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -453,7 +480,7 @@
   }
 </style>
 </head>
-<body data-stage="city">
+<body data-stage="city" data-ruta="a">
 
   <!-- CAPAS DE FONDO -->
   <div class="bg on" id="bgCity"></div>
@@ -476,10 +503,12 @@
     <div class="wrap">
       <span class="kicker rv">◆ Un plan pensado para Kimberly · Agosto 2026</span>
       <h1 class="rv">Kimberly, nueve días <span class="grad">para nosotros</span><br/>en México.</h1>
-      <p class="lead rv">Empezamos con tu cena de cumpleaños, seguimos con <b>Teotihuacán</b>, nos escapamos a <b>Holbox</b> y cerramos en <b>Chichén Itzá</b>. Sin prisa, y con huecos libres a propósito.</p>
+      <p class="lead rv">Empezamos con tu cena de cumpleaños y seguimos con <b>Teotihuacán</b>. Después armé dos rutas para la escapada — tú eliges cuál. Sin prisa, y con huecos libres a propósito.</p>
       <div class="hero-meta">
         <div class="chip rv"><b>5 → 13 de agosto</b> · 9 días</div>
-        <div class="chip rv">🏙️ CDMX · 🏝️ Holbox · 🛕 Yucatán</div>
+        <div class="chip rv only-a">🏙️ CDMX · 🏝️ Holbox · 🛕 Yucatán</div>
+        <div class="chip rv only-b">🏙️ CDMX · 🏝️ Isla Mujeres · 🛥️ Cozumel</div>
+        <div class="chip rv">🗺️ <b>Dos rutas — tú eliges</b></div>
         <div class="chip rv">Llegas <b>mié 5, 4:50 pm</b> ✈</div>
         <div class="chip rv">✅ <b>Vuelos a Cancún comprados</b></div>
         <div class="chip rv">🎂 <b>Feliz cumple</b> (atrasado, pero en grande)</div>
@@ -497,7 +526,25 @@
         <h2>Tres lugares, un solo viaje</h2>
         <p>Todo va en línea recta hacia el norte: nada de regresar sobre nuestros pasos ni horas perdidas en carretera.</p>
       </div>
-      <div class="route">
+
+      <div class="ruta-switch rv">
+        <div class="ruta-pills" role="group" aria-label="Elegir ruta">
+          <button type="button" class="ruta-pill active" id="rutaBtnA" onclick="setRuta('a')">Ruta A · La isla y las ruinas</button>
+          <button type="button" class="ruta-pill" id="rutaBtnB" onclick="setRuta('b')">Ruta B · Puro Caribe</button>
+        </div>
+        <div class="ruta-diff">
+          <span class="only-a"><b>Holbox + Valladolid</b> · agua rústica, sin sargazo</span>
+          <span class="only-b"><b>Isla Mujeres + Cozumel</b> · agua turquesa de postal</span>
+          <span class="only-a"><b>Chichén Itzá</b> a la apertura, 8am</span>
+          <span class="only-b"><b>Chichén Itzá</b> a media mañana, con chofer</span>
+          <span class="only-a"><b>Manejamos</b> 3 días en Yucatán</span>
+          <span class="only-b"><b>Cero manejo</b> — chofer y ferris</span>
+          <span class="only-a">🦈 Tiburón ballena incluido</span>
+          <span class="only-b">🦈 Tiburón ballena opcional (día largo) · 🛥️ Submarino Atlantis</span>
+        </div>
+      </div>
+
+      <div class="route only-a">
         <div class="leg cdmx rv">
           <span class="badge">Días 1–3</span>
           <span class="tag">Ciudad de México</span>
@@ -505,16 +552,37 @@
           <p>Tu cena de cumpleaños, las pirámides de Teotihuacán y una noche de lucha libre.</p>
         </div>
         <div class="leg holbox rv">
-          <span class="badge">Días 4–6</span>
+          <span class="badge">Días 4–5</span>
           <span class="tag">Quintana Roo</span>
           <h3>🏝️ Holbox</h3>
           <p>Isla sin autos, sin sargazo y con tiburón ballena. Hamaca, arena y atardeceres.</p>
         </div>
         <div class="leg yuca rv">
-          <span class="badge">Días 6–9</span>
+          <span class="badge">Días 6–7</span>
           <span class="tag">Yucatán</span>
           <h3>🛕 Chichén Itzá</h3>
           <p>Valladolid como base, carro para nosotros y cenotes cuando se nos antoje.</p>
+        </div>
+      </div>
+
+      <div class="route only-b">
+        <div class="leg cdmx rv">
+          <span class="badge">Días 1–3</span>
+          <span class="tag">Ciudad de México</span>
+          <h3>🏙️ CDMX</h3>
+          <p>Tu cena de cumpleaños, las pirámides de Teotihuacán y una noche de lucha libre.</p>
+        </div>
+        <div class="leg holbox rv">
+          <span class="badge">Días 4 y 5</span>
+          <span class="tag">Quintana Roo</span>
+          <h3>🏝️ Isla Mujeres</h3>
+          <p>Playa Norte, carrito de golf y Chichén Itzá con chofer. Sin subirnos a un volante.</p>
+        </div>
+        <div class="leg yuca rv">
+          <span class="badge">Días 6–8</span>
+          <span class="tag">Riviera Maya</span>
+          <h3>🛥️ Cozumel</h3>
+          <p>Playa del Carmen como base, ferry a Cozumel y el submarino Atlantis. Puro mar.</p>
         </div>
       </div>
     </div>
@@ -574,8 +642,8 @@
           </div>
         </div>
 
-        <!-- DÍA 4 · empieza la playa -->
-        <div class="day sea rv" data-stage="beach">
+        <!-- DÍA 4 · empieza la playa (RUTA A) -->
+        <div class="day sea rv only-a" data-stage="beach">
           <div class="day-card">
             <div class="daylabel">Día 4 · Sábado 8 de agosto</div>
             <h3>Nos vamos a la isla 🏝️</h3>
@@ -588,8 +656,8 @@
           </div>
         </div>
 
-        <!-- DÍA 5 -->
-        <div class="day sea rv" data-stage="beach">
+        <!-- DÍA 5 (RUTA A) -->
+        <div class="day sea rv only-a" data-stage="beach">
           <div class="day-card">
             <div class="daylabel">Día 5 · Domingo 9 de agosto</div>
             <h3>Tiburón ballena y nada más 🦈</h3>
@@ -601,8 +669,8 @@
           </div>
         </div>
 
-        <!-- DÍA 6 · empieza Yucatán -->
-        <div class="day land rv" data-stage="jungle">
+        <!-- DÍA 6 · empieza Yucatán (RUTA A) -->
+        <div class="day land rv only-a" data-stage="jungle">
           <div class="day-card">
             <div class="daylabel">Día 6 · Lunes 10 de agosto</div>
             <h3>De la isla a Valladolid 🚗</h3>
@@ -614,8 +682,8 @@
           </div>
         </div>
 
-        <!-- DÍA 7 -->
-        <div class="day land rv" data-stage="jungle">
+        <!-- DÍA 7 (RUTA A) -->
+        <div class="day land rv only-a" data-stage="jungle">
           <div class="day-card">
             <div class="daylabel">Día 7 · Martes 11 de agosto</div>
             <h3>Chichén Itzá y cenotes 🛕💦</h3>
@@ -628,14 +696,81 @@
           </div>
         </div>
 
-        <!-- DÍA 8 · de vuelta a la ciudad -->
-        <div class="day rv" data-stage="city">
+        <!-- DÍA 8 · de vuelta a la ciudad (RUTA A) -->
+        <div class="day rv only-a" data-stage="city">
           <div class="day-card">
             <div class="daylabel">Día 8 · Miércoles 12 de agosto</div>
             <h3>Un día regalado ✈️</h3>
             <div class="moves"><span class="mv car"><span class="mvi">🚗</span> Carro hasta Cancún · día 3 de 3</span><span class="mv"><span class="mvi">🚕</span> Uber al llegar a CDMX</span></div>
             <div class="slot"><div class="time">Mañana</div><div class="what"><b>Mañana libre en Valladolid</b><span>El vuelo sale hasta la noche, así que no hay prisa: desayunar rico, un último cenote o simplemente el centro sin reloj.</span></div></div>
             <div class="slot"><div class="time">5:00 pm</div><div class="what"><b>Valladolid → Cancún</b><span>~2 h manejando. Entregamos el carro en el aeropuerto.</span></div></div>
+            <div class="slot"><div class="time">9:50 pm</div><div class="what"><b>Vuelo Cancún → CDMX</b><span>Volaris Y4105, directo. Aterrizamos 11:10 pm y a dormir a casa. <b>Ya está comprado ✅</b></span></div></div>
+            <div class="heart-note">Regresamos un día antes a propósito: así, si un vuelo se retrasa, tu vuelo a Los Ángeles nunca está en riesgo. Y el vuelo llega al Aeropuerto Juárez, el mismo de donde sales mañana. 😌</div>
+          </div>
+        </div>
+
+        <!-- DÍA 4 (RUTA B) -->
+        <div class="day sea rv only-b" data-stage="beach">
+          <div class="day-card">
+            <div class="daylabel">Día 4 · Sábado 8 de agosto</div>
+            <h3>Nos vamos a Isla Mujeres 🏝️</h3>
+            <div class="moves"><span class="mv"><span class="mvi">🚕</span> Uber al hotel</span><span class="mv"><span class="mvi">🚤</span> Ferry a Isla Mujeres</span><span class="mv nocar">Sin carro este día</span></div>
+            <div class="slot"><div class="time">6:45 am</div><div class="what"><b>Vuelo CDMX → Cancún</b><span>Volaris Y4100, directo. Llegamos 10:03 am. <b>Ya está comprado ✅</b></span></div></div>
+            <div class="slot"><div class="time">Mediodía</div><div class="what"><b>Al hotel en Cancún a dejar maletas</b><span>Nuestra base para las dos primeras noches.</span></div></div>
+            <div class="slot"><div class="time">Tarde</div><div class="what"><b>Ferry a Isla Mujeres 🚤</b><span>~20 minutos cruzando. Playa Norte, carrito de golf y Punta Sur.</span></div></div>
+            <div class="slot"><div class="time">Atardecer</div><div class="what"><b>Playa Norte</b><span>Agua turquesa y somera, de las más bonitas del Caribe mexicano.</span></div></div>
+            <div class="heart-note">Isla Mujeres está protegida del sargazo, igual que Holbox — por eso la elegí en vez de quedarnos en la costa desde el día uno. 🌊</div>
+          </div>
+        </div>
+
+        <!-- DÍA 5 (RUTA B) -->
+        <div class="day land rv only-b" data-stage="jungle">
+          <div class="day-card">
+            <div class="daylabel">Día 5 · Domingo 9 de agosto</div>
+            <h3>Chichén Itzá y a Playa del Carmen 🛕</h3>
+            <div class="moves"><span class="mv"><span class="mvi">🚐</span> Chofer privado todo el día</span></div>
+            <div class="slot"><div class="time">7:00 am</div><div class="what"><b>Nos recoge el chofer en Cancún</b><span>~2 h 30 de camino. Vamos sentados, sin manejar.</span></div></div>
+            <div class="slot"><div class="time">10:00 am</div><div class="what"><b>Chichén Itzá</b><span>Llegamos a media mañana — con más gente que a la apertura, pero sin perder tiempo de carretera nosotros mismos.</span></div></div>
+            <div class="slot"><div class="time">1:00 pm</div><div class="what"><b>Cenote de camino</b><span>Una parada para refrescarnos antes de seguir.</span><span class="opt">Opcional</span></div></div>
+            <div class="slot"><div class="time">Tarde</div><div class="what"><b>El chofer nos deja en Playa del Carmen</b><span>Nuestra base para las últimas tres noches.</span></div></div>
+            <div class="heart-note">Todo el traslado va por cuenta de Josué — tú solo disfrutas el paisaje.</div>
+          </div>
+        </div>
+
+        <!-- DÍA 6 (RUTA B) -->
+        <div class="day sea rv only-b" data-stage="beach">
+          <div class="day-card">
+            <div class="daylabel">Día 6 · Lunes 10 de agosto</div>
+            <h3>Cozumel y el submarino 🛥️</h3>
+            <div class="moves"><span class="mv"><span class="mvi">🚤</span> Ferry a Cozumel</span></div>
+            <div class="slot"><div class="time">9:00 am</div><div class="what"><b>Ferry a Cozumel</b><span>~45 minutos cruzando desde Playa del Carmen.</span></div></div>
+            <div class="slot"><div class="time">11:00 am</div><div class="what"><b>Submarino Atlantis</b><span>Bajamos 30+ metros sin bucear — de los pocos submarinos turísticos que existen. Hay que reservar con anticipación.</span><span class="opt">Opcional</span></div></div>
+            <div class="slot"><div class="time">1:00 pm</div><div class="what"><b>Snorkel en Palancar</b><span>Uno de los arrecifes más famosos del Caribe.</span><span class="opt">Opcional</span></div></div>
+            <div class="slot"><div class="time">Tarde</div><div class="what"><b>Ferry de regreso a Playa del Carmen</b><span>A descansar y cenar en la Quinta Avenida.</span></div></div>
+          </div>
+        </div>
+
+        <!-- DÍA 7 (RUTA B) -->
+        <div class="day sea rv only-b" data-stage="beach">
+          <div class="day-card">
+            <div class="daylabel">Día 7 · Martes 11 de agosto</div>
+            <h3>Día libre en Playa del Carmen 🏖️</h3>
+            <div class="moves"><span class="mv nocar">Sin agenda fija</span></div>
+            <div class="slot"><div class="time">6:00 am</div><div class="what"><b>Tour de tiburón ballena</b><span>Agosto es la temporada. Sale de Cancún/Isla Mujeres, así que implica salir de Playa del Carmen ~4:00 am. Es un día largo, pero es lo único irrepetible del viaje.</span><span class="opt">Opcional</span></div></div>
+            <div class="slot"><div class="time">Día</div><div class="what"><b>Quinta Avenida y playa</b><span>Si no vamos por el tiburón ballena, este es el día sin reloj: caminar, comprar algo bonito, meternos al mar.</span></div></div>
+            <div class="slot"><div class="time">Tarde</div><div class="what"><b>Un cenote cerca de PDC</b><span>Dos Ojos o Jardín del Edén, a 30–40 minutos.</span><span class="opt">Opcional</span></div></div>
+            <div class="heart-note">Este día se acomoda a lo que decidamos: tiburón ballena, o simplemente no hacer nada.</div>
+          </div>
+        </div>
+
+        <!-- DÍA 8 (RUTA B) -->
+        <div class="day rv only-b" data-stage="city">
+          <div class="day-card">
+            <div class="daylabel">Día 8 · Miércoles 12 de agosto</div>
+            <h3>Un día regalado ✈️</h3>
+            <div class="moves"><span class="mv"><span class="mvi">🚌</span> ADO al aeropuerto</span></div>
+            <div class="slot"><div class="time">Mañana</div><div class="what"><b>Mañana libre en Playa del Carmen</b><span>El vuelo sale hasta la noche, así que no hay prisa.</span></div></div>
+            <div class="slot"><div class="time">6:30 pm</div><div class="what"><b>Playa del Carmen → Cancún</b><span>~1 h en ADO directo al aeropuerto.</span></div></div>
             <div class="slot"><div class="time">9:50 pm</div><div class="what"><b>Vuelo Cancún → CDMX</b><span>Volaris Y4105, directo. Aterrizamos 11:10 pm y a dormir a casa. <b>Ya está comprado ✅</b></span></div></div>
             <div class="heart-note">Regresamos un día antes a propósito: así, si un vuelo se retrasa, tu vuelo a Los Ángeles nunca está en riesgo. Y el vuelo llega al Aeropuerto Juárez, el mismo de donde sales mañana. 😌</div>
           </div>
@@ -691,7 +826,7 @@
           <div class="cost">~$400 MXN los dos, aprox.</div>
         </div>
 
-        <div class="act rv" data-act="Nadar con tiburón ballena 🦈">
+        <div class="act rv only-a" data-act="Nadar con tiburón ballena 🦈">
           <div class="box">✓</div>
           <div class="when">Domingo 9 · 6:00 am</div>
           <h4>🦈 Tiburón ballena</h4>
@@ -699,7 +834,7 @@
           <div class="cost">~$5,000 MXN los dos, aprox.</div>
         </div>
 
-        <div class="act rv" data-act="Carrito de golf en Holbox 🛺">
+        <div class="act rv only-a" data-act="Carrito de golf en Holbox 🛺">
           <div class="box">✓</div>
           <div class="when">Holbox · los dos días</div>
           <h4>🛺 Carrito de golf</h4>
@@ -707,7 +842,7 @@
           <div class="cost">~$1,600 MXN por día, aprox.</div>
         </div>
 
-        <div class="act rv" data-act="Cenote (Suytun o Ik Kil) 💦">
+        <div class="act rv only-a" data-act="Cenote (Suytun o Ik Kil) 💦">
           <div class="box">✓</div>
           <div class="when">Martes 11 · mediodía</div>
           <h4>💦 Un cenote</h4>
@@ -715,12 +850,52 @@
           <div class="cost">~$600 MXN los dos, aprox.</div>
         </div>
 
-        <div class="act rv" data-act="Ek Balam (la pirámide que sí se escala) 🛕">
+        <div class="act rv only-a" data-act="Ek Balam (la pirámide que sí se escala) 🛕">
           <div class="box">✓</div>
           <div class="when">Martes 11 · tarde</div>
           <h4>🛕 Ek Balam</h4>
           <p>Zona arqueológica casi vacía y, a diferencia de Chichén Itzá, aquí sí puedes subir a la pirámide.</p>
           <div class="cost">~$700 MXN los dos, aprox.</div>
+        </div>
+
+        <div class="act rv only-b" data-act="Playa Norte y carrito en Isla Mujeres 🏝️">
+          <div class="box">✓</div>
+          <div class="when">Sábado 8 · tarde</div>
+          <h4>🏝️ Isla Mujeres en carrito</h4>
+          <p>Rentamos un carrito de golf para movernos por la isla: Playa Norte, Punta Sur y las calles de colores, sin caminar bajo el sol.</p>
+          <div class="cost">~$900 MXN por el día, aprox.</div>
+        </div>
+
+        <div class="act rv only-b" data-act="Submarino Atlantis en Cozumel 🛥️">
+          <div class="box">✓</div>
+          <div class="when">Lunes 10 · 11:00 am</div>
+          <h4>🛥️ Submarino Atlantis</h4>
+          <p>Bajamos 30+ metros sin necesidad de bucear. Hay muy pocos submarinos turísticos en el mundo — este es de los más conocidos.</p>
+          <div class="cost">~$4,500 MXN los dos, aprox.</div>
+        </div>
+
+        <div class="act rv only-b" data-act="Snorkel en el arrecife de Palancar 🐠">
+          <div class="box">✓</div>
+          <div class="when">Lunes 10 · 1:00 pm</div>
+          <h4>🐠 Snorkel en Palancar</h4>
+          <p>Uno de los arrecifes más famosos del Caribe mexicano, frente a Cozumel.</p>
+          <div class="cost">~$1,000 MXN los dos, aprox.</div>
+        </div>
+
+        <div class="act rv only-b" data-act="Cenote cerca de Playa del Carmen 💦">
+          <div class="box">✓</div>
+          <div class="when">Martes 11 · tarde</div>
+          <h4>💦 Un cenote</h4>
+          <p>Dos Ojos o Jardín del Edén, a 30–40 minutos de Playa del Carmen. Agua dulce y fría.</p>
+          <div class="cost">~$600 MXN los dos, aprox.</div>
+        </div>
+
+        <div class="act rv only-b" data-act="Nadar con tiburón ballena (desde PDC) 🦈">
+          <div class="box">✓</div>
+          <div class="when">Martes 11 · 6:00 am</div>
+          <h4>🦈 Tiburón ballena</h4>
+          <p>Agosto es la temporada exacta, pero el tour sale de Cancún/Isla Mujeres — desde Playa del Carmen implica salir de madrugada. Es un día largo, y es lo más difícil de olvidar del viaje.</p>
+          <div class="cost">~$5,000 MXN los dos, aprox.</div>
         </div>
 
         <div class="act rv" data-act="Casa Azul de Frida Kahlo 🎨">
@@ -759,7 +934,8 @@
           <ul>
             <li><span class="lic">🏠</span><div><b>Dónde dormimos en CDMX</b><span>Mi casa, en la Benito Juárez. Las 4 noches.</span></div></li>
             <li><span class="lic">🎂</span><div><b>Tu cena de cumpleaños</b><span>La del World Trade Center va por mi cuenta. Es tu regalo.</span></div></li>
-            <li><span class="lic">🚗</span><div><b>El carro y la gasolina</b><span>Los 3 días de Yucatán. Yo manejo y yo lo pongo.</span></div></li>
+            <li class="only-a"><span class="lic">🚗</span><div><b>El carro y la gasolina</b><span>Los 3 días de Yucatán. Yo manejo y yo lo pongo.</span></div></li>
+            <li class="only-b"><span class="lic">🚐</span><div><b>El chofer a Chichén Itzá</b><span>Va por mi cuenta, igual que el ADO al aeropuerto del último día.</span></div></li>
             <li><span class="lic">🚕</span><div><b>Los Ubers en la ciudad</b><span>Todos los traslados de CDMX corren por mi cuenta.</span></div></li>
             <li><span class="lic">🗺️</span><div><b>Toda la organización</b><span>Reservas, horarios, rutas, tours. Tú solo llegas.</span></div></li>
           </ul>
@@ -771,20 +947,32 @@
           <div class="pothint">Como cualquier viaje entre dos: mitad y mitad, sin cuentas raras.</div>
           <ul>
             <li><span class="lic">✈️</span><div><b>Los vuelos a Cancún</b><span>Cada quien el suyo, como quedamos — y ya los tenemos los dos. Un pendiente menos. ✅</span></div></li>
-            <li><span class="lic">🏝️</span><div><b>Hospedaje de Holbox y Valladolid</b><span>4 noches en total, a la mitad.</span></div></li>
+            <li class="only-a"><span class="lic">🏝️</span><div><b>Hospedaje de Holbox y Valladolid</b><span>4 noches en total, a la mitad.</span></div></li>
+            <li class="only-b"><span class="lic">🏖️</span><div><b>Hospedaje de Cancún y Playa del Carmen</b><span>4 noches en total, a la mitad.</span></div></li>
+            <li class="only-b"><span class="lic">🚤</span><div><b>Ferris a Isla Mujeres y Cozumel</b><span>Van dentro de lo que elijas de la lista de opcionales.</span></div></li>
             <li><span class="lic">🍽️</span><div><b>Las comidas del viaje</b><span>Sin llevar cuenta de nada — hoy tú, mañana yo.</span></div></li>
             <li><span class="lic">🎟️</span><div><b>Lo que elijas de la lista</b><span>Solo lo que de verdad quieras hacer.</span></div></li>
           </ul>
         </div>
       </div>
 
-      <div class="guide rv">
+      <div class="guide rv only-a">
         <div class="gtop">
-          <h3>¿Cuánto traer, más o menos?</h3>
+          <h3>¿Cuánto traer, más o menos, en la Ruta A?</h3>
           <div class="gnum">$9,000 – 11,000 MXN</div>
           <div class="gusd">(unos $490 – 600 USD)</div>
         </div>
         <p>Bajó, porque los vuelos a Cancún ya están comprados los dos. Con eso vas holgada: cubre tu parte del hospedaje y las comidas de los nueve días, más lo que elijas de la lista de opcionales y un colchón para antojos, artesanías y lo que salga. Preferí pasarme de más a que te quedes corta — si sobra, mejor.</p>
+        <div class="freenote">Y lo más importante: si algo se te hace caro o no te late, lo quitamos y ya. El plan se acomoda a ti, no al revés. Lo que quiero es verte, lo demás son detalles. ♥</div>
+      </div>
+
+      <div class="guide rv only-b">
+        <div class="gtop">
+          <h3>¿Cuánto traer, más o menos, en la Ruta B?</h3>
+          <div class="gnum">$12,000 – 14,000 MXN</div>
+          <div class="gusd">(unos $650 – 760 USD)</div>
+        </div>
+        <p>Sube un poco respecto a la Ruta A: el submarino, los dos ferris y el hospedaje de Cancún/Playa del Carmen cuestan más que Holbox y Valladolid. Igual vas holgada — cubre tu parte de todo eso, más lo que elijas de la lista y un colchón para antojos. Preferí pasarme de más a que te quedes corta.</p>
         <div class="freenote">Y lo más importante: si algo se te hace caro o no te late, lo quitamos y ya. El plan se acomoda a ti, no al revés. Lo que quiero es verte, lo demás son detalles. ♥</div>
       </div>
     </div>
@@ -798,12 +986,15 @@
         <h2>Para que todo salga redondo</h2>
       </div>
       <div class="tips-grid">
-        <div class="tip rv"><div class="ico">🎒</div><h4>Maleta ligera</h4><p>En Holbox no hay banquetas: son calles de arena. Mejor mochila o maleta chica que una grande de ruedas.</p></div>
+        <div class="tip rv only-a"><div class="ico">🎒</div><h4>Maleta ligera</h4><p>En Holbox no hay banquetas: son calles de arena. Mejor mochila o maleta chica que una grande de ruedas.</p></div>
         <div class="tip rv"><div class="ico">🌦️</div><h4>Agosto llueve de tarde</h4><p>En CDMX casi siempre llueve por la tarde/noche. Por eso los planes fuertes van en la mañana.</p></div>
         <div class="tip rv"><div class="ico">🧴</div><h4>Bloqueador biodegradable</h4><p>En los cenotes y el tour de tiburón ballena lo exigen. El normal está prohibido — contamina el agua.</p></div>
-        <div class="tip rv"><div class="ico">💵</div><h4>Efectivo a la mano</h4><p>Trajineras, Patrick Miller, propinas y muchos lugares de Holbox son solo efectivo.</p></div>
+        <div class="tip rv only-a"><div class="ico">💵</div><h4>Efectivo a la mano</h4><p>Trajineras, Patrick Miller, propinas y muchos lugares de Holbox son solo efectivo.</p></div>
+        <div class="tip rv only-b"><div class="ico">💵</div><h4>Efectivo a la mano</h4><p>Trajineras, Patrick Miller y algunos lugares de las islas son solo efectivo.</p></div>
         <div class="tip rv"><div class="ico">📄</div><h4>Tu pasaporte</h4><p>Vigente, y guarda tu comprobante de entrada a México — lo piden en los vuelos internos.</p></div>
-        <div class="tip rv"><div class="ico">🚗</div><h4>Carro solo donde sirve</h4><p>En Holbox no entran autos: allá llegamos en ADO y ferry. El carro lo rentamos en Valladolid, justo los 3 días que sí lo manejamos.</p></div>
+        <div class="tip rv only-a"><div class="ico">🚗</div><h4>Carro solo donde sirve</h4><p>En Holbox no entran autos: allá llegamos en ADO y ferry. El carro lo rentamos en Valladolid, justo los 3 días que sí lo manejamos.</p></div>
+        <div class="tip rv only-b"><div class="ico">🚤</div><h4>Todo en ferry y chofer</h4><p>Isla Mujeres y Cozumel se cruzan en ferry; a Chichén Itzá vamos con chofer. No maneja nadie en esta ruta.</p></div>
+        <div class="tip rv only-b"><div class="ico">🌊</div><h4>Sargazo, dicho de frente</h4><p>Isla Mujeres y Cozumel están protegidas y suelen verse bien; Playa del Carmen puede traer algo en agosto. Por eso el plan se mete al mar sobre todo desde las islas.</p></div>
         <div class="tip rv"><div class="ico">❤️</div><h4>Huecos a propósito</h4><p>Hay días sin plan. No es descuido: lo mejor de los viajes casi siempre pasa en esos ratos.</p></div>
       </div>
     </div>
@@ -859,12 +1050,12 @@
         </a>
         <a class="track" href="https://open.spotify.com/search/Kanye%20West%20Ghost%20Town" target="_blank" rel="noopener">
           <span class="num">7</span><span class="artist kanye">Kanye</span>
-          <div class="tinfo"><b>Ghost Town</b><span>Mar abierto con el tiburón ballena. «I feel free» 🦈</span></div>
+          <div class="tinfo"><b>Ghost Town</b><span class="only-a">Mar abierto con el tiburón ballena. «I feel free» 🦈</span><span class="only-b">Snorkel en el arrecife de Cozumel. «I feel free» 🐠</span></div>
           <span class="play">▶</span>
         </a>
         <a class="track" href="https://open.spotify.com/search/Drake%20Rihanna%20Take%20Care" target="_blank" rel="noopener">
           <span class="num">8</span><span class="artist drake">Drake</span>
-          <div class="tinfo"><b>Take Care</b><span>Atardecer en Punta Cocos, solo nosotros 🌅</span></div>
+          <div class="tinfo"><b>Take Care</b><span class="only-a">Atardecer en Punta Cocos, solo nosotros 🌅</span><span class="only-b">Atardecer en Playa Norte, solo nosotros 🌅</span></div>
           <span class="play">▶</span>
         </a>
         <a class="track" href="https://open.spotify.com/search/Drake%20Fountains%20Tems" target="_blank" rel="noopener">
@@ -888,11 +1079,11 @@
     <div class="wrap">
       <div class="mail rv">
         <h2>💬 Kimberly, ¿qué te late?</h2>
-        <p>Elige arriba las actividades que quieres hacer y mándamelas por WhatsApp. Con eso cierro las reservaciones. ♥</p>
-        <div class="pickbox" id="pickbox">Aún no has elegido nada — toca las tarjetas de arriba 👆</div>
+        <p>Arriba elige tu ruta (A o B) y las actividades que quieras hacer, y mándamelas por WhatsApp. Con eso cierro las reservaciones. ♥</p>
+        <div class="pickbox" id="pickbox">Elijo mi ruta:</div>
         <form id="waForm" onsubmit="return false;">
           <textarea id="nota" placeholder="Un mensajito para Josué (opcional)… ♥"></textarea>
-          <a class="btn disabled" id="waBtn" href="#" target="_blank" rel="noopener">
+          <a class="btn" id="waBtn" href="#" target="_blank" rel="noopener">
             <span>💬</span> Mandarle mi elección a Josué
           </a>
         </form>
@@ -911,11 +1102,44 @@
   // Número de WhatsApp de Josué (formato internacional, solo dígitos).
   const JOSUE_WHATSAPP = "524446586361";
 
+  /* ---------- 0. Elegir ruta (A/B) ---------- */
+  const RUTA_LABELS = {
+    a: 'Ruta A — La isla y las ruinas (Holbox, Valladolid y Chichén Itzá)',
+    b: 'Ruta B — Puro Caribe (Isla Mujeres, Chichén Itzá y Cozumel)'
+  };
+  const rutaBtnA = document.getElementById('rutaBtnA');
+  const rutaBtnB = document.getElementById('rutaBtnB');
+  let rutaActual = 'a';
+
+  function setRuta(r) {
+    if (r === rutaActual || (r !== 'a' && r !== 'b')) return;
+    rutaActual = r;
+    body.setAttribute('data-ruta', r);
+    rutaBtnA.classList.toggle('active', r === 'a');
+    rutaBtnB.classList.toggle('active', r === 'b');
+
+    // La ruta que se oculta pierde su selección: si no, el mensaje de WhatsApp
+    // podría mezclar opcionales de las dos rutas (p. ej. Ek Balam con Cozumel).
+    document.querySelectorAll('.act.on').forEach(c => {
+      if (c.classList.contains(r === 'a' ? 'only-b' : 'only-a')) c.classList.remove('on');
+    });
+    render();
+
+    stageText.textContent = STAGE_LABELS[r][stageActual];
+
+    // El IntersectionObserver de abajo no dispara sobre elementos que estaban en
+    // display:none, así que revelamos a mano lo que ya quedó visible en pantalla.
+    requestAnimationFrame(() => {
+      revealVisible();
+      onScroll(); // el alto de la página cambió: hay que recalcular la barra de progreso
+    });
+  }
+
   /* ---------- 1. Fondo que cambia según la etapa del viaje ---------- */
-  const STAGES = {
-    city:   { layer: 'bgCity',   texto: 'Ciudad de México' },
-    beach:  { layer: 'bgBeach',  texto: '🏝️ Holbox' },
-    jungle: { layer: 'bgJungle', texto: '🛕 Yucatán' }
+  const STAGE_LAYERS = { city: 'bgCity', beach: 'bgBeach', jungle: 'bgJungle' };
+  const STAGE_LABELS = {
+    a: { city: 'Ciudad de México', beach: '🏝️ Holbox',          jungle: '🛕 Yucatán' },
+    b: { city: 'Ciudad de México', beach: '🏝️ Caribe mexicano', jungle: '🛕 Chichén Itzá' }
   };
   const body = document.body;
   const stagePill = document.getElementById('stagepill');
@@ -923,13 +1147,13 @@
   let stageActual = 'city';
 
   function setStage(nueva) {
-    if (nueva === stageActual || !STAGES[nueva]) return;
+    if (nueva === stageActual || !STAGE_LAYERS[nueva]) return;
     stageActual = nueva;
     body.setAttribute('data-stage', nueva);
-    Object.keys(STAGES).forEach(k => {
-      document.getElementById(STAGES[k].layer).classList.toggle('on', k === nueva);
+    Object.keys(STAGE_LAYERS).forEach(k => {
+      document.getElementById(STAGE_LAYERS[k]).classList.toggle('on', k === nueva);
     });
-    stageText.textContent = STAGES[nueva].texto;
+    stageText.textContent = STAGE_LABELS[rutaActual][nueva];
   }
 
   // Detecta qué bloque está cruzando el centro de la pantalla.
@@ -959,6 +1183,19 @@
     el.style.transitionDelay = Math.min(i % 6, 5) * 55 + 'ms';
     obsRv.observe(el);
   });
+
+  // Tras un cambio de ruta, los bloques que pasan de display:none a visibles no
+  // cruzan el observer justo en ese instante — si ya están en pantalla, se revelan
+  // a mano. Los que queden más abajo los agarra obsRv normalmente al hacer scroll.
+  function revealVisible() {
+    document.querySelectorAll('.rv:not(.in)').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * .92 && r.bottom > 0) {
+        el.classList.add('in');
+        obsRv.unobserve(el);
+      }
+    });
+  }
 
   /* ---------- 3. Barra de progreso + píldora de etapa ---------- */
   const bar = document.getElementById('progress');
@@ -998,16 +1235,10 @@
   function render() {
     const sel = Array.from(document.querySelectorAll('.act.on')).map(c => c.getAttribute('data-act'));
 
-    if (!sel.length) {
-      pickbox.textContent = 'Aún no has elegido nada — toca las tarjetas de arriba 👆';
-      statusEl.className = 'status';
-      statusEl.textContent = '';
-      waBtn.classList.add('disabled');
-      waBtn.removeAttribute('href');
-      return;
-    }
-
     const ul = document.createElement('ul');
+    const rutaLi = document.createElement('li');
+    rutaLi.innerHTML = `✨ Elijo la <b>${RUTA_LABELS[rutaActual]}</b>`;
+    ul.appendChild(rutaLi);
     sel.forEach(s => {
       const li = document.createElement('li');
       li.textContent = '✓ ' + s;
@@ -1015,15 +1246,22 @@
     });
     pickbox.textContent = '';
     const head = document.createElement('b');
-    head.textContent = `Quiero hacer ${sel.length} ${sel.length === 1 ? 'cosa' : 'cosas'}:`;
+    head.textContent = sel.length
+      ? `Elijo mi ruta y ${sel.length} ${sel.length === 1 ? 'actividad' : 'actividades'}:`
+      : 'Elijo mi ruta:';
     pickbox.appendChild(head);
     pickbox.appendChild(ul);
 
     statusEl.className = 'status ok';
     statusEl.textContent = '¡Listo! Ahora toca el botón verde para mandárselo. ♥';
 
-    let msg = `¡Hola Josué! 💕 Ya vi el plan completo y me encantó.\n\nDe los opcionales, quiero hacer:\n`;
-    sel.forEach(s => { msg += `• ${s}\n`; });
+    let msg = `¡Hola Josué! 💕 Ya vi las dos rutas y me decidí.\n\n✨ Elijo la ${RUTA_LABELS[rutaActual]}\n\n`;
+    if (sel.length) {
+      msg += `Y de los opcionales quiero hacer:\n`;
+      sel.forEach(s => { msg += `• ${s}\n`; });
+    } else {
+      msg += `De los opcionales todavía no decido nada.\n`;
+    }
     const extra = nota.value.trim();
     if (extra) msg += `\n${extra}`;
     msg += `\n\n— Kimberly`;
@@ -1036,6 +1274,7 @@
     card.addEventListener('click', () => { card.classList.toggle('on'); render(); });
   });
   nota.addEventListener('input', render);
+  render(); // deja el botón listo desde el arranque, con la Ruta A ya elegida por default
 </script>
 </body>
 </html>
