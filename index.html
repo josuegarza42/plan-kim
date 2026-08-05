@@ -461,6 +461,37 @@
   footer { padding: 44px 0 66px; text-align: center; color: var(--muted); font-size: 13px; }
   footer .heart { color: var(--rose); }
 
+  /* ---------- LETRERO DE BIENVENIDA (pantalla completa) ---------- */
+  .sign-btn {
+    position: fixed; bottom: 22px; right: 22px; z-index: 200;
+    display: inline-flex; align-items: center; gap: 9px;
+    background: linear-gradient(115deg, var(--rose), var(--violet));
+    color: #fff; border: none; border-radius: 999px; cursor: pointer;
+    padding: 14px 20px; font-size: 14px; font-weight: 700; font-family: inherit;
+    box-shadow: 0 12px 30px rgba(0,0,0,.4);
+  }
+  .sign-overlay {
+    position: fixed; inset: 0; z-index: 999; background: #000;
+    display: none; align-items: center; justify-content: center;
+    flex-direction: column; text-align: center; padding: 24px;
+    height: 100vh; height: 100dvh; cursor: pointer;
+  }
+  .sign-overlay.show { display: flex; }
+  .sign-overlay .sign-line1,
+  .sign-overlay .sign-line2 {
+    display: block; font-weight: 800; letter-spacing: -.02em; color: #fff;
+    line-height: 1.05;
+  }
+  .sign-overlay .sign-line1 {
+    font-size: clamp(46px, 15vw, 150px);
+    background: linear-gradient(115deg, var(--rose) 0%, var(--gold) 52%, var(--teal) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .sign-overlay .sign-line2 { font-size: clamp(28px, 8vw, 64px); margin-top: 14px; }
+  .sign-overlay .sign-hint {
+    margin-top: 34px; font-size: 13px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase;
+  }
+
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 860px) {
     .route { grid-template-columns: 1fr; }
@@ -1098,6 +1129,14 @@
     </div>
   </footer>
 
+  <!-- LETRERO DE BIENVENIDA -->
+  <button type="button" class="sign-btn" id="signBtn">🪧 Letrero de bienvenida</button>
+  <div class="sign-overlay" id="signOverlay">
+    <span class="sign-line1">GOD'S PLAN</span>
+    <span class="sign-line2">Kim in Mexico</span>
+    <span class="sign-hint">Toca para cerrar</span>
+  </div>
+
 <script>
   // Número de WhatsApp de Josué (formato internacional, solo dígitos).
   const JOSUE_WHATSAPP = "524446586361";
@@ -1275,6 +1314,24 @@
   });
   nota.addEventListener('input', render);
   render(); // deja el botón listo desde el arranque, con la Ruta A ya elegida por default
+
+  /* ---------- 6. Letrero de bienvenida en pantalla completa ---------- */
+  const signBtn = document.getElementById('signBtn');
+  const signOverlay = document.getElementById('signOverlay');
+
+  function closeSign() {
+    signOverlay.classList.remove('show');
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  }
+
+  signBtn.addEventListener('click', () => {
+    signOverlay.classList.add('show');
+    if (signOverlay.requestFullscreen) signOverlay.requestFullscreen().catch(() => {});
+  });
+  signOverlay.addEventListener('click', closeSign);
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) signOverlay.classList.remove('show');
+  });
 </script>
 </body>
 </html>
