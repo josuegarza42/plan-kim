@@ -462,21 +462,32 @@
   footer .heart { color: var(--rose); }
 
   /* ---------- LETRERO DE BIENVENIDA (pantalla completa) ---------- */
-  .sign-btn {
+  .sign-launcher {
     position: fixed; bottom: 22px; right: 22px; z-index: 200;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+  }
+  .sign-btn {
     display: inline-flex; align-items: center; gap: 9px;
-    background: linear-gradient(115deg, var(--rose), var(--violet));
     color: #fff; border: none; border-radius: 999px; cursor: pointer;
     padding: 14px 20px; font-size: 14px; font-weight: 700; font-family: inherit;
     box-shadow: 0 12px 30px rgba(0,0,0,.4);
   }
+  .sign-btn.classic { background: linear-gradient(115deg, var(--rose), var(--violet)); }
+  .sign-btn.mexico  { background: linear-gradient(115deg, #ce1126, #f5c26b, #2e7d46); }
   .sign-overlay {
     position: fixed; inset: 0; z-index: 999; background: #000;
     display: none; align-items: center; justify-content: center;
     flex-direction: column; text-align: center; padding: 24px;
-    height: 100vh; height: 100dvh; cursor: pointer;
+    height: 100vh; height: 100dvh; cursor: pointer; overflow: hidden;
   }
   .sign-overlay.show { display: flex; }
+  .sign-overlay .sign-line1,
+  .sign-overlay .sign-line2,
+  .sign-overlay .sign-kicker,
+  .sign-overlay .sign-emojis,
+  .sign-overlay .sign-hint {
+    position: relative; z-index: 2;
+  }
   .sign-overlay .sign-line1,
   .sign-overlay .sign-line2 {
     display: block; font-weight: 800; letter-spacing: -.02em; color: #fff;
@@ -490,6 +501,47 @@
   .sign-overlay .sign-line2 { font-size: clamp(28px, 8vw, 64px); margin-top: 14px; }
   .sign-overlay .sign-hint {
     margin-top: 34px; font-size: 13px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase;
+  }
+
+  /* ---------- LETRERO VERSIÓN MÉXICO ---------- */
+  .sign-overlay.mexico {
+    background:
+      repeating-linear-gradient(135deg, rgba(206,17,38,.14) 0 14px, rgba(245,194,107,.14) 14px 28px, rgba(46,125,70,.14) 28px 42px),
+      #120b09;
+  }
+  .picado-row {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 1;
+    display: flex; justify-content: center; gap: 3px; flex-wrap: wrap;
+  }
+  .picado-flag {
+    width: 46px; height: 60px; clip-path: polygon(0 0, 100% 0, 50% 100%);
+    box-shadow: 0 3px 10px rgba(0,0,0,.4);
+  }
+  .picado-flag.c1 { background: #ff6f91; }
+  .picado-flag.c2 { background: #f5c26b; }
+  .picado-flag.c3 { background: #6bd0c4; }
+  .picado-flag.c4 { background: #b28dff; }
+  .picado-flag.c5 { background: #4caf7d; }
+  .confetti-mx { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+  .conf-piece {
+    position: absolute; top: -24px; width: 9px; height: 15px; opacity: 0;
+    animation: confFall linear infinite;
+  }
+  @keyframes confFall {
+    0%   { transform: translateY(-40px) rotate(0deg); opacity: 0; }
+    8%   { opacity: .9; }
+    100% { transform: translateY(115vh) rotate(360deg); opacity: .85; }
+  }
+  .sign-overlay .sign-kicker {
+    display: block; font-size: clamp(14px, 3vw, 20px); font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+  }
+  .sign-overlay .sign-line1.mx {
+    background: linear-gradient(115deg, #ff5f6d 0%, #f5c26b 45%, #4caf7d 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .sign-overlay .sign-emojis {
+    display: block; margin-top: 22px; font-size: clamp(22px, 5vw, 34px); letter-spacing: 16px;
   }
 
   /* ---------- RESPONSIVE ---------- */
@@ -1130,10 +1182,24 @@
   </footer>
 
   <!-- LETRERO DE BIENVENIDA -->
-  <button type="button" class="sign-btn" id="signBtn">🪧 Letrero de bienvenida</button>
-  <div class="sign-overlay" id="signOverlay">
+  <div class="sign-launcher">
+    <button type="button" class="sign-btn classic" id="signBtnClassic">🪧 Letrero clásico</button>
+    <button type="button" class="sign-btn mexico" id="signBtnMexico">🌮 Letrero México</button>
+  </div>
+
+  <div class="sign-overlay" id="signOverlayClassic">
     <span class="sign-line1">GOD'S PLAN</span>
     <span class="sign-line2">Kim in Mexico</span>
+    <span class="sign-hint">Toca para cerrar</span>
+  </div>
+
+  <div class="sign-overlay mexico" id="signOverlayMexico">
+    <div class="picado-row" id="picadoRow"></div>
+    <div class="confetti-mx" id="confettiMx"></div>
+    <span class="sign-kicker">🤼 Bienvenida a México 🤼</span>
+    <span class="sign-line1 mx">GOD'S PLAN</span>
+    <span class="sign-line2">Kim in Mexico</span>
+    <span class="sign-emojis">🌵🌶️🦅🎉</span>
     <span class="sign-hint">Toca para cerrar</span>
   </div>
 
@@ -1315,23 +1381,51 @@
   nota.addEventListener('input', render);
   render(); // deja el botón listo desde el arranque, con la Ruta A ya elegida por default
 
-  /* ---------- 6. Letrero de bienvenida en pantalla completa ---------- */
-  const signBtn = document.getElementById('signBtn');
-  const signOverlay = document.getElementById('signOverlay');
+  /* ---------- 6. Letreros de bienvenida en pantalla completa ---------- */
+  const signOverlays = [
+    document.getElementById('signOverlayClassic'),
+    document.getElementById('signOverlayMexico')
+  ];
 
-  function closeSign() {
-    signOverlay.classList.remove('show');
+  function closeSigns() {
+    signOverlays.forEach(o => o.classList.remove('show'));
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
   }
 
-  signBtn.addEventListener('click', () => {
-    signOverlay.classList.add('show');
-    if (signOverlay.requestFullscreen) signOverlay.requestFullscreen().catch(() => {});
-  });
-  signOverlay.addEventListener('click', closeSign);
+  function openSign(overlay) {
+    overlay.classList.add('show');
+    if (overlay.requestFullscreen) overlay.requestFullscreen().catch(() => {});
+  }
+
+  document.getElementById('signBtnClassic').addEventListener('click', () => openSign(signOverlays[0]));
+  document.getElementById('signBtnMexico').addEventListener('click', () => openSign(signOverlays[1]));
+  signOverlays.forEach(o => o.addEventListener('click', closeSigns));
   document.addEventListener('fullscreenchange', () => {
-    if (!document.fullscreenElement) signOverlay.classList.remove('show');
+    if (!document.fullscreenElement) closeSigns();
   });
+
+  // Bunting de papel picado, repartido a lo ancho de la pantalla.
+  const picadoRow = document.getElementById('picadoRow');
+  const picadoColors = ['c1', 'c2', 'c3', 'c4', 'c5'];
+  for (let i = 0; i < 22; i++) {
+    const flag = document.createElement('div');
+    flag.className = 'picado-flag ' + picadoColors[i % picadoColors.length];
+    picadoRow.appendChild(flag);
+  }
+
+  // Confeti cayendo con los colores del viaje.
+  const confettiMx = document.getElementById('confettiMx');
+  const confColors = ['#ff6f91', '#f5c26b', '#6bd0c4', '#b28dff', '#4caf7d'];
+  for (let i = 0; i < 60; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'conf-piece';
+    piece.style.left = (i * 1.7 + (i % 7)) + '%';
+    piece.style.background = confColors[i % confColors.length];
+    piece.style.animationDuration = (5 + (i % 6)) + 's';
+    piece.style.animationDelay = (i * 0.18) + 's';
+    if (i % 3 === 0) piece.style.borderRadius = '50%';
+    confettiMx.appendChild(piece);
+  }
 </script>
 </body>
 </html>
