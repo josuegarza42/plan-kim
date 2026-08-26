@@ -458,6 +458,215 @@
   .mail .status { margin-top: 15px; font-size: 14px; min-height: 20px; }
   .status.ok { color: var(--teal); }
 
+  /* ---------- SAN VALENTÍN: UNA ENTREGA QUE TARDA ---------- */
+  #san-valentin { padding: 88px 0; overflow: hidden; }
+  .love-episode {
+    position: relative; overflow: hidden; display: grid; grid-template-columns: 1.08fr .92fr;
+    align-items: center; gap: 38px; min-height: 610px; padding: 54px;
+    border: 1px solid rgba(169,240,255,.34); border-radius: 34px;
+    background:
+      radial-gradient(circle at 14% 8%, rgba(135,241,255,.3), transparent 26%),
+      radial-gradient(circle at 92% 19%, rgba(255,229,94,.2), transparent 25%),
+      linear-gradient(145deg, #0b91b9 0%, #075d91 52%, #092b5d 100%);
+    box-shadow: 0 30px 80px rgba(0,0,0,.42), inset 0 0 85px rgba(2,20,69,.24);
+    isolation: isolate;
+  }
+  .love-episode::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; opacity: .38;
+    background-image: radial-gradient(circle, #fff 0 2px, transparent 3px);
+    background-size: 76px 76px; mask-image: linear-gradient(#000, transparent 78%);
+  }
+  .love-episode::after {
+    content: ""; position: absolute; z-index: -1; left: -8%; right: -8%; bottom: -105px; height: 205px;
+    border-radius: 50% 50% 0 0; background: linear-gradient(180deg,#e9cf8f,#b88169);
+    box-shadow: 0 -15px 40px rgba(255,232,169,.12);
+  }
+  .ocean-flower { position: absolute; z-index: -1; width: 98px; height: 98px; opacity: .18; color: #ff9fcf; }
+  .ocean-flower::before, .ocean-flower::after { content:""; position:absolute; inset:34px 2px; border:8px solid currentColor; border-radius:999px; }
+  .ocean-flower::after { transform: rotate(90deg); }
+  .ocean-flower.of1 { right: 4%; top: 5%; transform: rotate(20deg); }
+  .ocean-flower.of2 { left: 43%; bottom: 5%; color:#ffe668; transform: scale(.66) rotate(-17deg); }
+  .love-copy { position: relative; z-index: 2; }
+  .glove-ticket {
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 21px; padding: 9px 14px;
+    border: 1px dashed rgba(255,255,255,.64); border-radius: 9px; background: rgba(3,31,78,.38);
+    color: #fff19a; font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase;
+    transform: rotate(-1.5deg);
+  }
+  .love-copy h2 { color: #fff; font-size: clamp(38px,5.7vw,64px); line-height: .99; letter-spacing: -.045em; }
+  .love-copy h2 span { color:#ffe86d; text-shadow: 0 4px 0 #cd793b, 0 13px 26px rgba(255,211,72,.2); }
+  .love-copy > p { max-width: 560px; margin: 22px 0 0; color:#d9f8ff; font-size: 16px; }
+  .episode-nods { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0 28px; }
+  .episode-nod { padding:7px 11px; border:1px solid rgba(255,255,255,.2); border-radius:999px; background:rgba(2,28,74,.38); color:#eefcff; font-size:11px; }
+  .give-flowers {
+    position: relative; display:inline-flex; align-items:center; justify-content:center; gap:11px;
+    border:0; border-radius:999px; padding:18px 24px; cursor:pointer; font:800 15px/1.2 inherit;
+    color:#44142f; background:linear-gradient(135deg,#fff4a9,#ff9bca 52%,#ff6aaa);
+    box-shadow:0 8px 0 #ad3471,0 18px 38px rgba(25,5,62,.36),inset 0 2px 0 rgba(255,255,255,.74);
+    transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;
+  }
+  .give-flowers::before { content:""; position:absolute; inset:-8px; border:2px solid rgba(255,236,104,.64); border-radius:inherit; animation:giftPulse 2s ease-out infinite; }
+  .give-flowers:hover { transform:translateY(-3px) scale(1.02); filter:saturate(1.08); box-shadow:0 11px 0 #ad3471,0 23px 44px rgba(25,5,62,.42); }
+  .give-flowers:active { transform:translateY(5px); box-shadow:0 3px 0 #ad3471,0 10px 24px rgba(25,5,62,.3); }
+  .give-flowers span:first-child { font-size:24px; }
+  .love-hint { min-height:20px; margin-top:19px; color:#c2f1ff; font-size:12px; }
+  .official-frame { position:relative; z-index:2; width:100%; transform:rotate(2.3deg); }
+  .official-frame::before { content:""; position:absolute; inset:9px -8px -9px 8px; border-radius:19px; background:#f7d94d; transform:rotate(2.8deg); }
+  .official-frame img { position:relative; display:block; width:100%; aspect-ratio:16/9; object-fit:cover; border:8px solid #fff7d0; border-radius:18px; box-shadow:0 24px 50px rgba(1,20,58,.46); }
+  .official-frame figcaption { position:relative; margin:12px 7px 0; color:#d9f7ff; font-size:10px; text-align:center; }
+  .official-frame a { color:#fff09a; text-decoration:none; font-weight:700; }
+  @keyframes giftPulse { 0%{transform:scale(.96);opacity:.8} 75%,100%{transform:scale(1.14);opacity:0} }
+
+  body.valentine-open { overflow:hidden; }
+  .valentine-story {
+    position:fixed; z-index:1300; inset:0; display:grid; place-items:center; overflow:hidden;
+    padding:14px; background:#061d43; opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .32s ease,visibility .32s ease;
+  }
+  .valentine-story.show { opacity:1; visibility:visible; pointer-events:auto; }
+  .toon-stage {
+    position:relative; width:min(1180px,calc(100vw - 28px),calc((100dvh - 28px) * 1.777));
+    aspect-ratio:16/9; overflow:hidden; border:5px solid #bdf5ff; border-radius:28px;
+    background:#118eb9; box-shadow:0 30px 100px rgba(0,0,0,.62),inset 0 0 70px rgba(5,31,84,.25);
+    isolation:isolate; font-family:"Trebuchet MS",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  .toon-world { position:absolute; inset:0; overflow:hidden; background:linear-gradient(180deg,#31bce2 0%,#148ebc 58%,#0d6699 100%); }
+  .toon-world::before {
+    content:""; position:absolute; inset:-80px 0 0; opacity:.28;
+    background-image:radial-gradient(circle,rgba(255,255,255,.95) 0 3px,transparent 4px);
+    background-size:92px 92px; animation:bubblesUp 10s linear infinite;
+  }
+  .sun-rays { position:absolute; inset:-25% -10% 35%; opacity:.24; background:repeating-conic-gradient(from 250deg at 50% 0,transparent 0 9deg,#d9fbff 10deg 15deg,transparent 16deg 28deg); filter:blur(7px); }
+  .toon-sand { position:absolute; z-index:1; left:-5%; right:-5%; bottom:-12%; height:34%; border-radius:50% 50% 0 0; background:radial-gradient(ellipse at 24% 26%,#d88692 0 9px,transparent 10px),radial-gradient(ellipse at 75% 18%,#9a73bd 0 8px,transparent 9px),linear-gradient(180deg,#f2d893,#c4946e); }
+  .fair-silhouette { position:absolute; z-index:1; left:4%; right:4%; bottom:20%; height:39%; opacity:.32; }
+  .fair-wheel { position:absolute; right:4%; bottom:0; width:25%; aspect-ratio:1; border:8px solid #334c8e; border-radius:50%; animation:wheelTurn 18s linear infinite; }
+  .fair-wheel::before,.fair-wheel::after { content:""; position:absolute; left:calc(50% - 3px); top:-4%; width:6px; height:108%; background:#334c8e; }
+  .fair-wheel::after { transform:rotate(90deg); }
+  .fair-wheel i { position:absolute; width:18%; aspect-ratio:1; border-radius:45% 45% 50% 50%; background:#ef5d9d; border:3px solid #253b76; }
+  .fair-wheel i:nth-child(1){left:41%;top:-11%}.fair-wheel i:nth-child(2){right:-8%;top:40%}.fair-wheel i:nth-child(3){left:41%;bottom:-11%}.fair-wheel i:nth-child(4){left:-8%;top:40%}
+  .glove-gate { position:absolute; left:7%; bottom:0; width:27%; height:72%; border:9px solid #304989; border-bottom:0; border-radius:55% 55% 0 0; }
+  .glove-gate::after { content:"FERIA DEL GUANTE"; position:absolute; left:-12%; right:-12%; top:23%; padding:6% 2%; border:4px solid #ffe260; border-radius:10px; background:#e64b96; color:#fff6a1; font-size:clamp(7px,1.1vw,14px); font-weight:900; letter-spacing:.08em; text-align:center; transform:rotate(-2deg); }
+  .flower-cloud { position:absolute; z-index:0; width:10%; aspect-ratio:1; opacity:.34; color:#ffd45f; }
+  .flower-cloud::before,.flower-cloud::after { content:""; position:absolute; inset:38% 2%; border:8px solid currentColor; border-radius:999px; }
+  .flower-cloud::after { transform:rotate(90deg); }
+  .flower-cloud.fc1{left:11%;top:10%}.flower-cloud.fc2{right:17%;top:8%;color:#f78fbe;transform:scale(.7) rotate(24deg)}.flower-cloud.fc3{left:48%;top:22%;color:#b9a2ff;transform:scale(.5) rotate(-15deg)}
+  .toon-coral { position:absolute; z-index:2; bottom:14%; width:7%; height:20%; background:#e64b83; clip-path:polygon(37% 100%,40% 48%,12% 21%,28% 11%,47% 36%,45% 0,61% 4%,59% 41%,85% 17%,95% 31%,62% 61%,67% 100%); }
+  .toon-coral.tc1{left:2%}.toon-coral.tc2{right:2%;background:#5fbd83;transform:scale(.78) rotate(8deg)}
+
+  .story-controls { position:absolute; z-index:50; left:14px; right:14px; top:13px; display:flex; align-items:center; justify-content:space-between; pointer-events:none; }
+  .story-badge { padding:8px 13px; border:2px solid #ffe76a; border-radius:8px; background:#e74e96; color:#fff6ae; box-shadow:0 4px 0 #8f2b5b; font-size:10px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+  .control-buttons { display:flex; gap:7px; pointer-events:auto; }
+  .story-control { width:40px; height:40px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.45); border-radius:50%; background:rgba(3,30,72,.62); color:#fff; font:700 17px/1 inherit; cursor:pointer; backdrop-filter:blur(9px); }
+  .scene-dots { position:absolute; z-index:48; top:19px; left:50%; display:flex; gap:7px; transform:translateX(-50%); }
+  .scene-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.32); box-shadow:0 0 0 1px rgba(255,255,255,.25); transition:.25s ease; }
+  .scene-dot.on { width:22px; border-radius:999px; background:#ffe665; box-shadow:0 0 12px #ffe665; }
+  .episode-timeline { position:absolute; z-index:47; top:0; left:0; right:0; height:4px; background:rgba(5,23,57,.25); }
+  .episode-timeline span { display:block; width:0; height:100%; background:linear-gradient(90deg,#ffe665,#ff70ad); transition:width .25s linear; }
+
+  .title-card { position:absolute; z-index:30; inset:0; display:grid; place-items:center; padding:8%; text-align:center; cursor:pointer; background:radial-gradient(circle at 50% 42%,rgba(38,205,228,.75),rgba(3,49,105,.94)); opacity:0; visibility:hidden; }
+  .title-card::before { content:""; position:absolute; inset:0; opacity:.18; background:url('assets/spongebob-valentine-official.jpg') center/cover; mix-blend-mode:screen; }
+  .title-inner { position:relative; max-width:760px; }
+  .title-kicker { color:#fff19a; font-size:clamp(10px,1.4vw,16px); font-weight:900; letter-spacing:.18em; text-transform:uppercase; }
+  .title-card h3 { margin:10px 0; color:#fff; font-size:clamp(35px,7vw,83px); line-height:.92; letter-spacing:-.055em; text-shadow:0 7px 0 #0a558a,0 17px 35px rgba(0,0,0,.28); }
+  .title-card h3 span { color:#ffe76d; }
+  .title-card p { color:#d9f9ff; font-size:clamp(13px,1.8vw,20px); }
+
+  .toon-character { position:absolute; z-index:10; bottom:16%; opacity:0; transform-origin:50% 100%; transition:opacity .35s ease,transform .55s cubic-bezier(.2,1.2,.35,1); filter:drop-shadow(0 17px 12px rgba(4,30,67,.25)); }
+  .toon-character > img { display:block; width:100%; height:auto; max-height:42vh; object-fit:contain; }
+  .toon-character > svg { display:none; }
+  .toon-character.image-failed > img { display:none; }
+  .toon-character.image-failed > svg { display:block; width:100%; height:auto; overflow:visible; }
+  .bob-toon { left:10%; width:27%; transform:translateX(-140%) rotate(-8deg); }
+  .patrick-toon { right:12%; width:24%; transform:translateX(140%) rotate(8deg); }
+  .bob-arm,.patrick-arm,.patrick-brow,.bob-mouth { transform-box:fill-box; transform-origin:center; }
+  .sandy-flight { position:absolute; z-index:14; top:15%; right:-38%; width:35%; opacity:0; filter:drop-shadow(0 18px 14px rgba(4,29,65,.28)); }
+  .sandy-flight svg { display:block; width:100%; overflow:visible; }
+  .heart-cargo { transform-box:fill-box; transform-origin:center; }
+  .scallop { position:absolute; z-index:16; width:7%; aspect-ratio:1.3; opacity:0; transform:scale(.2) rotate(-20deg); }
+  .scallop::before { content:""; position:absolute; inset:13% 0 0; border-radius:50% 50% 45% 45%; background:repeating-radial-gradient(ellipse at 50% 100%,#a052c9 0 5px,#df8cf0 6px 10px); border:3px solid #68318d; clip-path:polygon(50% 0,100% 100%,0 100%); }
+  .scallop::after { content:"••"; position:absolute; left:29%; top:46%; color:#fff; font-size:clamp(8px,1.5vw,17px); letter-spacing:5px; text-shadow:0 1px 0 #333; }
+  .sc1{left:43%;top:17%}.sc2{left:58%;top:9%}.sc3{left:70%;top:27%}
+  .comic-impact { position:absolute; z-index:17; left:54%; top:22%; width:25%; aspect-ratio:1; display:grid; place-items:center; opacity:0; background:#ffe85d; clip-path:polygon(50% 0,61% 32%,86% 14%,75% 40%,100% 50%,72% 59%,87% 86%,60% 72%,50% 100%,39% 71%,14% 87%,28% 60%,0 50%,30% 39%,14% 14%,40% 31%); color:#9e275e; font-size:clamp(16px,3vw,40px); font-weight:1000; transform:scale(.1) rotate(-18deg); }
+  .sea-shadow { position:absolute; z-index:6; left:26%; right:26%; top:6%; height:12%; border-radius:50%; background:rgba(4,17,54,.45); filter:blur(12px); opacity:0; transform:scale(.2); }
+  .giant-heart { position:absolute; z-index:12; left:34%; top:-70%; width:32%; opacity:0; filter:drop-shadow(0 25px 20px rgba(30,3,45,.35)); }
+  .giant-heart svg { display:block; width:100%; overflow:visible; }
+  .real-frame { position:absolute; z-index:32; left:50%; top:11%; width:35%; padding:7px 7px 24px; border-radius:10px; background:#fff7cc; box-shadow:0 18px 38px rgba(2,18,56,.45); opacity:0; transform:translateX(-50%) scale(.72) rotate(-4deg); pointer-events:none; }
+  .real-frame img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; }
+  .real-frame span { position:absolute; left:9px; right:9px; bottom:6px; color:#633653; font-size:8px; font-weight:900; letter-spacing:.05em; text-align:center; text-transform:uppercase; }
+  .frame-fair { transform:translateX(-50%) scale(.72) rotate(3deg); }
+  .frame-heart { width:31%; }
+
+  .dialogue-panel { position:absolute; z-index:40; left:5%; right:5%; bottom:4%; display:flex; align-items:center; gap:14px; min-height:86px; padding:15px 19px; border:4px solid #fff2a8; border-radius:20px; background:rgba(6,31,72,.91); box-shadow:0 8px 0 rgba(2,16,48,.45),0 16px 35px rgba(0,0,0,.28); color:#fff; opacity:0; transform:translateY(35px); transition:.35s ease; backdrop-filter:blur(8px); }
+  .speaker-avatar { flex:0 0 52px; width:52px; height:52px; display:grid; place-items:center; border:3px solid #fff2a8; border-radius:50%; background:#138eb8; font-size:28px; box-shadow:0 3px 0 rgba(0,0,0,.25); }
+  .dialogue-copy { flex:1; min-width:0; text-align:left; }
+  .dialogue-speaker { color:#ffe66a; font-size:10px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+  .dialogue-text { margin-top:3px; font-size:clamp(13px,1.8vw,20px); font-weight:700; line-height:1.28; }
+  .tap-next { flex:0 0 auto; border:0; border-radius:999px; padding:10px 13px; background:#ff69a6; color:#fff; font:800 10px/1 inherit; cursor:pointer; box-shadow:0 4px 0 #9a2b61; }
+
+  .final-scene { position:absolute; z-index:35; inset:0; display:grid; grid-template-columns:.9fr 1.1fr; align-items:center; gap:1%; padding:8% 7% 5%; opacity:0; visibility:hidden; background:linear-gradient(110deg,rgba(7,58,110,.92),rgba(207,65,131,.88)),url('assets/spongebob-valentine-official.jpg') center/cover; }
+  .final-bouquet { width:100%; max-width:390px; justify-self:center; opacity:0; transform:translateY(60%) scale(.35) rotate(-10deg); filter:drop-shadow(0 25px 20px rgba(26,4,51,.42)); }
+  .final-bouquet svg { display:block; width:100%; overflow:visible; }
+  .final-copy { padding:5%; border:3px solid rgba(255,247,190,.86); border-radius:24px; background:linear-gradient(145deg,rgba(255,250,216,.97),rgba(255,215,235,.97)); color:#4b1639; box-shadow:0 20px 55px rgba(3,16,52,.35); text-align:left; opacity:0; transform:translateX(60px); }
+  .final-copy .mini { color:#ad3c79; font-size:9px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+  .final-copy h3 { margin:7px 0 10px; font-size:clamp(26px,4.2vw,51px); line-height:.96; letter-spacing:-.045em; }
+  .final-copy p { color:#72315d; font-size:clamp(11px,1.35vw,16px); line-height:1.5; }
+  .final-copy .signature { margin-top:11px; color:#d2327b; font-size:clamp(16px,2vw,23px); font-weight:900; }
+  .story-again { margin-top:13px; border:1px solid rgba(91,29,71,.25); border-radius:999px; padding:10px 14px; background:#fff; color:#6c2854; font:800 10px/1 inherit; cursor:pointer; }
+  .official-credit { position:absolute; z-index:42; right:12px; bottom:8px; color:rgba(255,255,255,.7); font-size:7px; }
+  .gift-particle { position:absolute; z-index:44; left:50%; top:48%; pointer-events:none; opacity:0; font-size:24px; animation:giftBurst 2.7s ease-out forwards; }
+
+  /* Escenas: cada estado mueve las piezas como un pequeño episodio. */
+  .valentine-story[data-scene="0"] .title-card { opacity:1; visibility:visible; animation:titlePop .7s cubic-bezier(.2,1.15,.3,1); }
+  .valentine-story:not([data-scene="0"]):not([data-scene="7"]) .dialogue-panel { opacity:1; transform:none; }
+  .valentine-story[data-scene="1"] .bob-toon,.valentine-story[data-scene="2"] .bob-toon,.valentine-story[data-scene="3"] .bob-toon,.valentine-story[data-scene="4"] .bob-toon,.valentine-story[data-scene="5"] .bob-toon,.valentine-story[data-scene="6"] .bob-toon { opacity:1; transform:none; animation:bobIdle 1.6s ease-in-out infinite; }
+  .valentine-story[data-scene="1"] .patrick-toon,.valentine-story[data-scene="2"] .patrick-toon,.valentine-story[data-scene="3"] .patrick-toon,.valentine-story[data-scene="4"] .patrick-toon,.valentine-story[data-scene="5"] .patrick-toon,.valentine-story[data-scene="6"] .patrick-toon { opacity:1; transform:none; animation:patrickIdle 1.9s .2s ease-in-out infinite; }
+  .valentine-story[data-scene="1"] .bob-arm { animation:waveArm .65s ease-in-out 4 alternate; }
+  .valentine-story[data-scene="1"] .frame-bob { animation:realFrameFlash 1.65s .12s ease both; }
+  .valentine-story[data-scene="2"] .patrick-arm { animation:happyArms .45s ease-in-out 6 alternate; }
+  .valentine-story[data-scene="2"] .patrick-toon { animation:patrickHop .62s ease-in-out 4; }
+  .valentine-story[data-scene="3"] .sandy-flight { opacity:1; animation:sandyApproach 3.5s cubic-bezier(.18,.7,.32,1) forwards; }
+  .valentine-story[data-scene="3"] .heart-cargo { animation:heartSwing .8s ease-in-out infinite alternate; }
+  .valentine-story[data-scene="3"] .frame-fair { animation:realFrameFlash 1.55s .1s ease both; }
+  .valentine-story[data-scene="4"] .sandy-flight { opacity:1; right:22%; animation:sandyTrouble .35s linear infinite alternate; }
+  .valentine-story[data-scene="4"] .scallop { opacity:1; animation:scallopAttack .85s cubic-bezier(.2,1.2,.4,1) infinite alternate; }
+  .valentine-story[data-scene="4"] .sc2 { animation-delay:.16s }.valentine-story[data-scene="4"] .sc3 { animation-delay:.3s }
+  .valentine-story[data-scene="4"] .comic-impact { opacity:1; animation:impactPop .55s .7s cubic-bezier(.2,1.3,.3,1) both; }
+  .valentine-story[data-scene="5"] .patrick-toon { animation:patrickRage .22s linear infinite; filter:drop-shadow(0 0 20px #ff5f74); }
+  .valentine-story[data-scene="5"] .patrick-brow { transform:rotate(18deg); }
+  .valentine-story[data-scene="5"] .bob-toon { animation:bobNervous .16s linear infinite; }
+  .valentine-story[data-scene="6"] .sea-shadow { opacity:1; animation:shadowGrow 2.3s ease-in forwards; }
+  .valentine-story[data-scene="6"] .giant-heart { opacity:1; animation:heartLanding 2.5s cubic-bezier(.18,.85,.28,1.08) forwards; }
+  .valentine-story[data-scene="6"] .bob-toon,.valentine-story[data-scene="6"] .patrick-toon { animation:lookUp .65s ease-in-out infinite alternate; }
+  .valentine-story[data-scene="6"] .frame-heart { animation:realFrameFlash 1.65s 1.25s ease both; }
+  .valentine-story[data-scene="7"] .final-scene { opacity:1; visibility:visible; animation:finalWash .75s ease both; }
+  .valentine-story[data-scene="7"] .final-bouquet { animation:bouquetArrives 1s .25s cubic-bezier(.16,1.2,.3,1) forwards,bouquetFloat 3s 1.4s ease-in-out infinite; }
+  .valentine-story[data-scene="7"] .final-copy { animation:copyArrives .8s .72s ease forwards; }
+
+  @keyframes bubblesUp{to{background-position:0 -184px}}
+  @keyframes wheelTurn{to{transform:rotate(360deg)}}
+  @keyframes titlePop{from{transform:scale(.82);filter:blur(8px)}to{transform:none;filter:none}}
+  @keyframes bobIdle{50%{transform:translateY(-7px) rotate(-1deg)}}
+  @keyframes patrickIdle{50%{transform:translateY(-5px) rotate(1deg)}}
+  @keyframes waveArm{to{transform:rotate(-38deg) translateY(-5px)}}
+  @keyframes happyArms{to{transform:rotate(24deg) translateY(-6px)}}
+  @keyframes patrickHop{50%{transform:translateY(-24px) rotate(3deg)}}
+  @keyframes sandyApproach{0%{right:-38%;transform:rotate(8deg)}70%{right:16%;transform:rotate(-4deg)}100%{right:22%;transform:none}}
+  @keyframes heartSwing{to{transform:rotate(7deg) translateX(4px)}}
+  @keyframes sandyTrouble{to{transform:translate(5px,-4px) rotate(4deg)}}
+  @keyframes scallopAttack{0%{transform:scale(.3) translate(-40px,20px) rotate(-24deg)}100%{transform:scale(1) translate(18px,-8px) rotate(18deg)}}
+  @keyframes impactPop{0%{transform:scale(.1) rotate(-18deg)}75%{transform:scale(1.16) rotate(4deg)}100%{transform:scale(1) rotate(0)}}
+  @keyframes patrickRage{25%{transform:translateX(-5px) rotate(-2deg)}75%{transform:translateX(5px) rotate(2deg)}}
+  @keyframes bobNervous{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+  @keyframes shadowGrow{to{opacity:.75;transform:scale(2.3)}}
+  @keyframes heartLanding{0%{top:-70%;transform:scale(.55) rotate(-8deg)}72%{top:8%;transform:scale(1.08) rotate(3deg)}100%{top:4%;transform:scale(1) rotate(0)}}
+  @keyframes realFrameFlash{0%{opacity:0;transform:translateX(-50%) scale(.72) rotate(-4deg)}18%,72%{opacity:1;transform:translateX(-50%) scale(1) rotate(1deg)}100%{opacity:0;transform:translateX(-50%) scale(1.04) rotate(2deg)}}
+  @keyframes lookUp{to{transform:translateY(5px) scaleY(.97)}}
+  @keyframes finalWash{from{filter:brightness(2.2);transform:scale(1.05)}to{filter:none;transform:none}}
+  @keyframes bouquetArrives{0%{opacity:0;transform:translateY(60%) scale(.35) rotate(-10deg)}72%{opacity:1;transform:translateY(-4%) scale(1.06) rotate(2deg)}100%{opacity:1;transform:none}}
+  @keyframes bouquetFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+  @keyframes copyArrives{to{opacity:1;transform:none}}
+  @keyframes giftBurst{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}15%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1.3) rotate(var(--r))}}
+
   footer { padding: 44px 0 66px; text-align: center; color: var(--muted); font-size: 13px; }
   footer .heart { color: var(--rose); }
 
@@ -549,6 +758,8 @@
     .route { grid-template-columns: 1fr; }
     .tips-grid { grid-template-columns: repeat(2, 1fr); }
     .sun { width: 130px; height: 130px; top: 8%; right: 6%; }
+    .love-episode { grid-template-columns:1fr; padding:46px 34px 64px; }
+    .official-frame { width:min(590px,100%); margin:0 auto; }
   }
   @media (max-width: 720px) {
     .opt-grid, .tips-grid { grid-template-columns: 1fr; }
@@ -556,6 +767,43 @@
     .slot .time { flex: none; }
     .stagepill { top: 12px; right: 12px; padding: 7px 12px; font-size: 12px; }
     .btotal { flex-direction: column; align-items: flex-start; }
+    #san-valentin { padding:58px 0; }
+    .love-episode { min-height:0; gap:40px; padding:42px 20px 56px; border-radius:25px; }
+    .love-copy { text-align:center; }
+    .love-copy > p { font-size:15px; }
+    .episode-nods { justify-content:center; }
+    .give-flowers { width:100%; max-width:330px; padding:17px 18px; }
+    .valentine-story { padding:0; }
+    .toon-stage { width:100vw; height:100dvh; aspect-ratio:auto; border:0; border-radius:0; }
+    .story-badge { max-width:210px; padding:7px 9px; font-size:8px; }
+    .scene-dots { top:59px; }
+    .fair-silhouette { bottom:25%; height:31%; }
+    .glove-gate { width:45%; height:63%; left:2%; }
+    .fair-wheel { width:42%; right:-4%; }
+    .toon-sand { bottom:-6%; height:31%; }
+    .toon-character { bottom:27%; }
+    .bob-toon { left:2%; width:52%; }
+    .patrick-toon { right:3%; width:43%; }
+    .sandy-flight { top:18%; width:58%; }
+    .scallop { width:13%; }
+    .sc1{left:35%;top:22%}.sc2{left:56%;top:14%}.sc3{left:75%;top:29%}
+    .comic-impact { left:47%; top:24%; width:42%; }
+    .sea-shadow { left:18%; right:18%; top:12%; }
+    .giant-heart { left:20%; width:60%; }
+    .real-frame { top:15%; width:72%; }
+    .frame-heart { width:68%; }
+    .dialogue-panel { left:4%; right:4%; bottom:4%; min-height:126px; align-items:flex-start; gap:10px; padding:13px; border-width:3px; }
+    .speaker-avatar { flex-basis:42px; width:42px; height:42px; font-size:23px; }
+    .dialogue-text { font-size:14px; }
+    .tap-next { position:absolute; right:10px; bottom:9px; padding:8px 10px; }
+    .title-card { padding:18% 7%; }
+    .title-card h3 { font-size:clamp(43px,14vw,68px); }
+    .final-scene { grid-template-columns:1fr; align-content:center; gap:0; padding:12% 6% 4%; overflow:auto; }
+    .final-bouquet { width:min(260px,69vw); margin-bottom:-28px; }
+    .final-copy { padding:20px 18px; text-align:center; }
+    .final-copy h3 { font-size:34px; }
+    .final-copy p { font-size:12px; }
+    .official-credit { display:none; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .2s !important; }
@@ -1157,6 +1405,36 @@
     </div>
   </section>
 
+  <!-- SAN VALENTÍN: EL REGALO QUE SE TARDÓ -->
+  <section id="san-valentin" data-stage="city">
+    <div class="wrap">
+      <div class="love-episode">
+        <div class="ocean-flower of1" aria-hidden="true"></div>
+        <div class="ocean-flower of2" aria-hidden="true"></div>
+
+        <div class="love-copy">
+          <div class="glove-ticket">🧤 Dos entradas · Feria del Guante</div>
+          <h2>Kimberly, tengo un regalo <span>muy especial</span> para ti</h2>
+          <p>Solo hay un pequeño detalle: viene volando desde el fondo del mar y, como en aquel San Valentín, puede que se tarde un poquito en llegar…</p>
+          <div class="episode-nods" aria-label="Guiños al episodio de San Valentín">
+            <span class="episode-nod">🧽 Una sorpresa secreta</span>
+            <span class="episode-nod">⭐ Un poquito de impaciencia</span>
+            <span class="episode-nod">🎈 Un regalo enorme</span>
+          </div>
+          <button type="button" class="give-flowers" id="giveFlowersBtn" aria-haspopup="dialog" aria-controls="valentineStory">
+            <span>💐</span><span>Darle flores a Kimberly</span>
+          </button>
+          <div class="love-hint" id="loveHint" aria-live="polite">Toca el botón y ten un poquito de paciencia…</div>
+        </div>
+
+        <figure class="official-frame">
+          <img src="assets/spongebob-valentine-official.jpg" alt="Patricio sorprendido frente al enorme regalo de San Valentín" loading="lazy" />
+          <figcaption>Fotograma oficial · Nickelodeon / SpongeBob SquarePants · <a href="https://www.youtube.com/watch?v=F2cxmQ_J0nQ" target="_blank" rel="noopener">ver el clip que inspiró esto ↗</a></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- WHATSAPP -->
   <section id="elige" data-stage="city">
     <div class="wrap">
@@ -1201,6 +1479,175 @@
     <span class="sign-line2">Kim in Mexico</span>
     <span class="sign-emojis">🌵🌶️🦅🎉</span>
     <span class="sign-hint">Toca para cerrar</span>
+  </div>
+
+  <!-- HISTORIA DE LA ENTREGA VIRTUAL -->
+  <div class="valentine-story-legacy" id="valentineStoryLegacy" hidden>
+    <button type="button" class="story-close" id="legacyStoryClose" aria-label="Cerrar la sorpresa">×</button>
+    <div class="story-wrap">
+      <div class="story-lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="story-sign">🧤 Feria del Guante · Entrega especial</div>
+
+      <div class="story-wait" id="storyWait">
+        <div class="wait-shot">
+          <img src="assets/spongebob-valentine-official.jpg" alt="Patricio esperando su regalo de San Valentín" />
+          <span id="waitCaption">Patricio espera pacientemente… por ahora.</span>
+        </div>
+        <div class="wait-copy">
+          <div class="wait-kicker">Rastreo en vivo · Fondo de Bikini</div>
+          <h3 id="storyTitle">Tu regalo ya viene, Kimberly</h3>
+          <p id="storyStatus" aria-live="assertive">Bob está intentando guardar el secreto mientras Sandy prepara la entrega.</p>
+          <div class="tracker" aria-label="Progreso de la entrega">
+            <div class="track-stop on">Sorpresa</div>
+            <div class="track-stop">En el aire</div>
+            <div class="track-stop">¿Problemas?</div>
+            <div class="track-stop">Kimberly</div>
+          </div>
+          <div class="story-progress"><div class="story-progress-fill"></div></div>
+          <div class="wait-time" id="waitTime">Tiempo estimado: unos segunditos</div>
+        </div>
+      </div>
+
+      <div class="story-gift">
+        <div class="gift-cinema">
+          <img src="assets/spongebob-valentine-official.jpg" alt="El gran corazón de San Valentín por fin llegó" />
+          <div class="giant-bouquet" aria-label="Un enorme ramo virtual de flores para Kimberly">
+            <svg viewBox="0 0 440 430" role="img" aria-label="Ramo de flores rosas, amarillas y lilas">
+              <defs>
+                <radialGradient id="petalPink"><stop stop-color="#ffe1ee"/><stop offset=".7" stop-color="#ff77af"/><stop offset="1" stop-color="#d92e78"/></radialGradient>
+                <radialGradient id="petalGold"><stop stop-color="#fffbd2"/><stop offset=".7" stop-color="#ffdc62"/><stop offset="1" stop-color="#dc9630"/></radialGradient>
+                <radialGradient id="petalLilac"><stop stop-color="#f5e8ff"/><stop offset=".7" stop-color="#b891ff"/><stop offset="1" stop-color="#7450ce"/></radialGradient>
+                <linearGradient id="leafLove" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8ee19a"/><stop offset="1" stop-color="#257e59"/></linearGradient>
+                <linearGradient id="paperLove" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff5ac"/><stop offset="1" stop-color="#f39fc5"/></linearGradient>
+                <g id="pinkFlower"><g fill="url(#petalPink)"><ellipse rx="23" ry="44" transform="translate(0 -29)"/><ellipse rx="23" ry="44" transform="rotate(72) translate(0 -29)"/><ellipse rx="23" ry="44" transform="rotate(144) translate(0 -29)"/><ellipse rx="23" ry="44" transform="rotate(216) translate(0 -29)"/><ellipse rx="23" ry="44" transform="rotate(288) translate(0 -29)"/></g><circle r="20" fill="#ffdc64"/><circle r="8" fill="#9f5935"/></g>
+                <g id="goldFlower"><g fill="url(#petalGold)"><ellipse rx="22" ry="42" transform="translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(72) translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(144) translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(216) translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(288) translate(0 -28)"/></g><circle r="20" fill="#8d502c"/><circle r="7" fill="#f7bd43"/></g>
+                <g id="lilacFlower"><g fill="url(#petalLilac)"><ellipse rx="22" ry="42" transform="translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(72) translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(144) translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(216) translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(288) translate(0 -28)"/></g><circle r="20" fill="#fff09a"/><circle r="7" fill="#b56643"/></g>
+              </defs>
+              <g fill="none" stroke="#31815b" stroke-width="7" stroke-linecap="round"><path d="M216 377Q205 258 143 139"/><path d="M218 378Q224 252 287 126"/><path d="M217 375Q215 232 215 98"/><path d="M211 374Q167 271 100 220"/><path d="M223 374Q259 273 339 214"/></g>
+              <g fill="url(#leafLove)"><path d="M183 299Q116 258 126 211Q180 235 183 299"/><path d="M247 290Q310 238 310 195Q252 219 247 290"/><path d="M199 245Q151 203 163 167Q203 199 199 245"/><path d="M233 239Q270 192 265 158Q226 194 233 239"/></g>
+              <use href="#pinkFlower" transform="translate(215 105)"/><use href="#goldFlower" transform="translate(139 153) scale(.93)"/><use href="#lilacFlower" transform="translate(291 144) scale(.9)"/><use href="#pinkFlower" transform="translate(100 220) scale(.7)"/><use href="#goldFlower" transform="translate(339 214) scale(.73)"/>
+              <path d="M116 263Q215 308 318 261L264 409Q215 433 166 408Z" fill="url(#paperLove)" stroke="#fff5d0" stroke-width="5"/><path d="M120 265Q177 296 217 295Q253 295 314 263" fill="none" stroke="#d75f96" stroke-width="9" stroke-linecap="round"/>
+              <g transform="translate(217 331)"><path d="M0 0Q-58-30-73 13Q-31 44 0 16Q31 44 73 13Q58-30 0 0" fill="#e34288"/><circle r="18" fill="#c52c70"/></g>
+            </svg>
+          </div>
+        </div>
+        <div class="gift-message">
+          <div class="mini">Entrega completada · Mucho más grande de lo esperado</div>
+          <h3>Flores para ti, Kimberly 💐</h3>
+          <p>Porque aunque el regalo tarde, aunque se atraviesen unas vieiras y aunque el plan se complique un poquito, siempre voy a encontrar la manera de hacerte llegar algo bonito. Estas flores guardan todas las ganas que tengo de verte.</p>
+          <div class="signature">Con amor, Josué ♥</div>
+          <button type="button" class="story-again" id="legacyStoryAgain">↻ Ver la entrega otra vez</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MINI EPISODIO 2D -->
+  <div class="valentine-story" id="valentineStory" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="toonStoryTitle" data-scene="0">
+    <div class="toon-stage">
+      <div class="episode-timeline" aria-hidden="true"><span id="episodeTimeline"></span></div>
+      <div class="story-controls">
+        <div class="story-badge">🧤 Especial de San Valentín</div>
+        <div class="control-buttons">
+          <button type="button" class="story-control" id="storySound" aria-label="Desactivar sonido" aria-pressed="true">♪</button>
+          <button type="button" class="story-control" id="storyClose" aria-label="Cerrar la sorpresa">×</button>
+        </div>
+      </div>
+      <div class="scene-dots" id="sceneDots" aria-label="Progreso del episodio">
+        <i class="scene-dot on"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i>
+      </div>
+
+      <div class="toon-world" aria-hidden="true">
+        <div class="sun-rays"></div>
+        <div class="flower-cloud fc1"></div><div class="flower-cloud fc2"></div><div class="flower-cloud fc3"></div>
+        <div class="fair-silhouette"><div class="glove-gate"></div><div class="fair-wheel"><i></i><i></i><i></i><i></i></div></div>
+        <div class="toon-sand"></div><div class="toon-coral tc1"></div><div class="toon-coral tc2"></div>
+      </div>
+
+      <div class="title-card">
+        <div class="title-inner">
+          <div class="title-kicker">Una historia de Josué para Kimberly</div>
+          <h3 id="toonStoryTitle">El regalo que <span>se tardó</span></h3>
+          <p>Un mini episodio bajo el mar · toca para avanzar</p>
+        </div>
+      </div>
+
+      <div class="real-frame frame-bob" aria-hidden="true"><img src="assets/valentine-frame-3.jpg" alt=""/><span>Frame real · Bob guarda el secreto</span></div>
+      <div class="real-frame frame-fair" aria-hidden="true"><img src="assets/valentine-frame-1.jpg" alt=""/><span>Frame real · Feria del Guante</span></div>
+      <div class="real-frame frame-heart" aria-hidden="true"><img src="assets/valentine-frame-2.jpg" alt=""/><span>Frame real · La sorpresa por fin llega</span></div>
+
+      <!-- Bob: personaje vectorial con brazos y rostro animables -->
+      <div class="toon-character bob-toon" aria-hidden="true">
+        <img src="assets/spongebob-character.png" alt="" />
+        <svg viewBox="0 0 220 330">
+          <g class="bob-arm"><path d="M47 154Q11 132 14 103" fill="none" stroke="#f6df43" stroke-width="13" stroke-linecap="round"/><path d="M14 103l-9-15m10 15 15-8m-15 8-1-19" fill="none" stroke="#f6df43" stroke-width="7" stroke-linecap="round"/></g>
+          <g><path d="M57 245l-8 55M153 245l11 55" stroke="#f4dd45" stroke-width="12" stroke-linecap="round"/><path d="M28 304h41M145 304h42" stroke="#171a3b" stroke-width="15" stroke-linecap="round"/></g>
+          <rect x="35" y="29" width="150" height="218" rx="25" fill="#f8df39" stroke="#7a6a16" stroke-width="6"/>
+          <g fill="#b4a92a" opacity=".7"><circle cx="56" cy="57" r="9"/><circle cx="165" cy="72" r="7"/><circle cx="51" cy="185" r="8"/><circle cx="171" cy="205" r="10"/><circle cx="107" cy="42" r="5"/></g>
+          <rect x="35" y="204" width="150" height="43" fill="#fff"/><rect x="35" y="225" width="150" height="38" fill="#8b512d"/><path d="M35 225h150" stroke="#372018" stroke-width="5"/><path d="M80 226l10 21m48-21-10 21" stroke="#17172f" stroke-width="7"/>
+          <g><ellipse cx="89" cy="104" rx="40" ry="47" fill="#fff" stroke="#493d20" stroke-width="5"/><ellipse cx="137" cy="104" rx="40" ry="47" fill="#fff" stroke="#493d20" stroke-width="5"/><circle cx="98" cy="108" r="15" fill="#44a8d3"/><circle cx="128" cy="108" r="15" fill="#44a8d3"/><circle cx="101" cy="110" r="7" fill="#111"/><circle cx="125" cy="110" r="7" fill="#111"/><circle cx="105" cy="104" r="3" fill="#fff"/><circle cx="122" cy="104" r="3" fill="#fff"/></g>
+          <path d="M112 119Q119 140 108 143" fill="#f8df39" stroke="#806e20" stroke-width="4"/>
+          <g class="bob-mouth"><path d="M71 158Q110 194 153 157Q143 211 110 211Q80 209 71 158" fill="#702440" stroke="#38211c" stroke-width="5"/><path d="M82 164h23v24H87zM117 164h23v24h-23z" fill="#fff"/><path d="M87 199Q110 182 135 201" fill="none" stroke="#f06a88" stroke-width="10" stroke-linecap="round"/></g>
+          <path d="M177 155q30 12 33-12" fill="none" stroke="#f6df43" stroke-width="13" stroke-linecap="round"/><path d="M110 231v28" stroke="#e22f50" stroke-width="14"/><path d="M110 259l-17-12 17-11 17 11z" fill="#e22f50"/>
+        </svg>
+      </div>
+
+      <!-- Patricio: estrella vectorial, salto y berrinche animados -->
+      <div class="toon-character patrick-toon" aria-hidden="true">
+        <img src="assets/patrick-character.png" alt="" />
+        <svg viewBox="0 0 240 330">
+          <g class="patrick-arm"><path d="M62 157Q21 128 11 84" fill="none" stroke="#ef8fa1" stroke-width="26" stroke-linecap="round"/><path d="M177 157q42-30 52-72" fill="none" stroke="#ef8fa1" stroke-width="26" stroke-linecap="round"/></g>
+          <path d="M120 12L158 106l67 36-55 38 17 105-67-30-69 30 18-105-56-38 69-36z" fill="#ef8fa1" stroke="#9d4b67" stroke-width="6" stroke-linejoin="round"/>
+          <path d="M51 235q68 29 137 0l-2 60-39-9-28 13-29-13-39 9z" fill="#91c64c" stroke="#4e792e" stroke-width="5"/><path d="M68 249q15 3 27 18m48-12q17 7 29 25" stroke="#7b4fa8" stroke-width="9"/>
+          <g><ellipse cx="101" cy="113" rx="24" ry="34" fill="#fff" stroke="#6f364b" stroke-width="5"/><ellipse cx="137" cy="113" rx="24" ry="34" fill="#fff" stroke="#6f364b" stroke-width="5"/><circle cx="106" cy="118" r="8" fill="#171524"/><circle cx="132" cy="118" r="8" fill="#171524"/></g>
+          <g class="patrick-brow"><path d="M80 76l35 7M126 83l34-7" stroke="#81394e" stroke-width="8" stroke-linecap="round"/></g>
+          <path d="M81 160Q119 197 158 160Q151 216 119 216Q88 213 81 160" fill="#7d2845" stroke="#6e3344" stroke-width="5"/><path d="M95 201q24-20 49 0" fill="none" stroke="#f06f8f" stroke-width="10" stroke-linecap="round"/>
+          <g fill="#bc5f78"><circle cx="54" cy="159" r="7"/><circle cx="171" cy="152" r="6"/><circle cx="127" cy="44" r="5"/></g>
+        </svg>
+      </div>
+
+      <!-- Sandy y el corazón volador -->
+      <div class="sandy-flight" aria-hidden="true">
+        <svg viewBox="0 0 390 250">
+          <g class="heart-cargo" transform="translate(210 16)"><path d="M84 36C52-8 0 11 0 55c0 51 84 106 84 106s84-55 84-106c0-44-52-63-84-19z" fill="#ed347c" stroke="#9a225b" stroke-width="7"/><path d="M37 34q24-24 47 3" fill="none" stroke="#ff9bc2" stroke-width="9" stroke-linecap="round"/><text x="84" y="91" text-anchor="middle" fill="#fff4a6" font-size="24" font-weight="900">K + J</text><path d="M72 157l-26 86m50-85 16 85" stroke="#fff" stroke-width="3"/></g>
+          <g transform="translate(10 44)"><path d="M30 151Q-15 103 30 55Q5 9 61 16Q103-9 130 33Q165 47 150 86Q172 131 127 151Z" fill="#fff" stroke="#9fb6bd" stroke-width="7"/><circle cx="81" cy="76" r="59" fill="#b7eff4" fill-opacity=".55" stroke="#fff" stroke-width="8"/><path d="M44 77q12-50 55-37 39 15 25 60-13 39-53 29-40-11-27-52" fill="#b9783e"/><path d="M104 44q23-40 45-23-3 36-34 45" fill="#9a5b35"/><ellipse cx="65" cy="78" rx="13" ry="18" fill="#fff"/><ellipse cx="93" cy="78" rx="13" ry="18" fill="#fff"/><circle cx="69" cy="82" r="5"/><circle cx="90" cy="82" r="5"/><path d="M63 107q20 15 40-1" fill="none" stroke="#5d3327" stroke-width="6" stroke-linecap="round"/><path d="M129 132q27 25 47 54" stroke="#fff" stroke-width="18" stroke-linecap="round"/><path d="M32 132Q9 158 0 186" stroke="#fff" stroke-width="18" stroke-linecap="round"/><path d="M81 135v65" stroke="#d9e8e7" stroke-width="43"/><path d="M66 158h30" stroke="#ef4568" stroke-width="7"/><path d="M61 201l-13 35m43-35 16 35" stroke="#fff" stroke-width="20" stroke-linecap="round"/></g>
+        </svg>
+      </div>
+      <div class="scallop sc1" aria-hidden="true"></div><div class="scallop sc2" aria-hidden="true"></div><div class="scallop sc3" aria-hidden="true"></div>
+      <div class="comic-impact" aria-hidden="true">¡ÑAM!</div>
+      <div class="sea-shadow" aria-hidden="true"></div>
+      <div class="giant-heart" aria-hidden="true"><svg viewBox="0 0 400 380"><path d="M200 355S18 239 18 123C18 21 142-5 200 78 258-5 382 21 382 123c0 116-182 232-182 232z" fill="#ee367e" stroke="#9d245c" stroke-width="12"/><path d="M70 83q55-55 107 5" fill="none" stroke="#ffadd0" stroke-width="20" stroke-linecap="round"/><text x="200" y="208" text-anchor="middle" fill="#fff3a5" font-size="51" font-weight="900">K + J</text></svg></div>
+
+      <div class="dialogue-panel" id="dialoguePanel">
+        <div class="speaker-avatar" id="speakerAvatar">🧽</div>
+        <div class="dialogue-copy"><div class="dialogue-speaker" id="dialogueSpeaker">Bob</div><div class="dialogue-text" id="dialogueText" aria-live="assertive">Kimberly, tengo una sorpresa especial para ti.</div></div>
+        <button type="button" class="tap-next" id="storyNext">Siguiente ›</button>
+      </div>
+
+      <div class="final-scene">
+        <div class="final-bouquet" aria-label="Un enorme ramo virtual de flores para Kimberly">
+          <svg viewBox="0 0 440 430" role="img" aria-label="Ramo de flores rosas, amarillas y lilas">
+            <defs>
+              <radialGradient id="petalPink2"><stop stop-color="#ffe1ee"/><stop offset=".7" stop-color="#ff77af"/><stop offset="1" stop-color="#d92e78"/></radialGradient><radialGradient id="petalGold2"><stop stop-color="#fffbd2"/><stop offset=".7" stop-color="#ffdc62"/><stop offset="1" stop-color="#dc9630"/></radialGradient><radialGradient id="petalLilac2"><stop stop-color="#f5e8ff"/><stop offset=".7" stop-color="#b891ff"/><stop offset="1" stop-color="#7450ce"/></radialGradient>
+              <linearGradient id="leafLove2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8ee19a"/><stop offset="1" stop-color="#257e59"/></linearGradient><linearGradient id="paperLove2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff5ac"/><stop offset="1" stop-color="#f39fc5"/></linearGradient>
+              <g id="pinkFlower2"><g fill="url(#petalPink2)"><ellipse rx="23" ry="44" transform="translate(0 -29)"/><ellipse rx="23" ry="44" transform="rotate(72) translate(0 -29)"/><ellipse rx="23" ry="44" transform="rotate(144) translate(0 -29)"/><ellipse rx="23" ry="44" transform="rotate(216) translate(0 -29)"/><ellipse rx="23" ry="44" transform="rotate(288) translate(0 -29)"/></g><circle r="20" fill="#ffdc64"/><circle r="8" fill="#9f5935"/></g>
+              <g id="goldFlower2"><g fill="url(#petalGold2)"><ellipse rx="22" ry="42" transform="translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(72) translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(144) translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(216) translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(288) translate(0 -28)"/></g><circle r="20" fill="#8d502c"/><circle r="7" fill="#f7bd43"/></g>
+              <g id="lilacFlower2"><g fill="url(#petalLilac2)"><ellipse rx="22" ry="42" transform="translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(72) translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(144) translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(216) translate(0 -28)"/><ellipse rx="22" ry="42" transform="rotate(288) translate(0 -28)"/></g><circle r="20" fill="#fff09a"/><circle r="7" fill="#b56643"/></g>
+            </defs>
+            <g fill="none" stroke="#31815b" stroke-width="7" stroke-linecap="round"><path d="M216 377Q205 258 143 139"/><path d="M218 378Q224 252 287 126"/><path d="M217 375Q215 232 215 98"/><path d="M211 374Q167 271 100 220"/><path d="M223 374Q259 273 339 214"/></g><g fill="url(#leafLove2)"><path d="M183 299Q116 258 126 211Q180 235 183 299"/><path d="M247 290Q310 238 310 195Q252 219 247 290"/><path d="M199 245Q151 203 163 167Q203 199 199 245"/><path d="M233 239Q270 192 265 158Q226 194 233 239"/></g>
+            <use href="#pinkFlower2" transform="translate(215 105)"/><use href="#goldFlower2" transform="translate(139 153) scale(.93)"/><use href="#lilacFlower2" transform="translate(291 144) scale(.9)"/><use href="#pinkFlower2" transform="translate(100 220) scale(.7)"/><use href="#goldFlower2" transform="translate(339 214) scale(.73)"/><path d="M116 263Q215 308 318 261L264 409Q215 433 166 408Z" fill="url(#paperLove2)" stroke="#fff5d0" stroke-width="5"/><path d="M120 265Q177 296 217 295Q253 295 314 263" fill="none" stroke="#d75f96" stroke-width="9" stroke-linecap="round"/><g transform="translate(217 331)"><path d="M0 0Q-58-30-73 13Q-31 44 0 16Q31 44 73 13Q58-30 0 0" fill="#e34288"/><circle r="18" fill="#c52c70"/></g>
+          </svg>
+        </div>
+        <div class="final-copy">
+          <div class="mini">Entrega completada · Más grande de lo esperado</div>
+          <h3>Flores para ti, Kimberly 💐</h3>
+          <p>Aunque el regalo tarde, aunque se atraviesen unas vieiras y aunque el plan se complique un poquito, siempre voy a encontrar la manera de hacerte llegar algo bonito. Estas flores guardan todas las ganas que tengo de verte.</p>
+          <div class="signature">Con amor, Josué ♥</div>
+          <button type="button" class="story-again" id="storyAgain">↻ Ver el episodio otra vez</button>
+        </div>
+      </div>
+      <div class="official-credit">Frames del clip oficial · “Valentine's Day” · SpongeBob SquarePants © Nickelodeon</div>
+    </div>
   </div>
 
 <script>
@@ -1426,6 +1873,349 @@
     if (i % 3 === 0) piece.style.borderRadius = '50%';
     confettiMx.appendChild(piece);
   }
+
+  /* ---------- 7. La entrega de flores que tarda un poquito ---------- */
+  if (false) { // Versión anterior conservada como referencia; el mini episodio vive abajo.
+  const giveFlowersBtn = document.getElementById('giveFlowersBtn');
+  const valentineStory = document.getElementById('valentineStory');
+  const storyClose = document.getElementById('storyClose');
+  const storyAgain = document.getElementById('storyAgain');
+  const storyWait = document.getElementById('storyWait');
+  const storyTitle = document.getElementById('storyTitle');
+  const storyStatus = document.getElementById('storyStatus');
+  const waitCaption = document.getElementById('waitCaption');
+  const waitTime = document.getElementById('waitTime');
+  const loveHint = document.getElementById('loveHint');
+  const trackStops = Array.from(document.querySelectorAll('.track-stop'));
+  let storyTimers = [];
+  let storyPreviousFocus = null;
+  let storyAudio = null;
+
+  function clearStoryTimers() {
+    storyTimers.forEach(clearTimeout);
+    storyTimers = [];
+    if (storyAudio) {
+      storyAudio.close().catch(() => {});
+      storyAudio = null;
+    }
+  }
+
+  function setDeliveryStop(index) {
+    trackStops.forEach((stop, i) => stop.classList.toggle('on', i <= index));
+  }
+
+  function prepareDeliveryChime(delaySeconds) {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      storyAudio = new AudioCtx();
+      storyAudio.resume().catch(() => {});
+      [523.25, 659.25, 783.99, 1046.5].forEach((frequency, i) => {
+        const oscillator = storyAudio.createOscillator();
+        const gain = storyAudio.createGain();
+        const start = storyAudio.currentTime + delaySeconds + i * .11;
+        oscillator.type = 'sine';
+        oscillator.frequency.value = frequency;
+        gain.gain.setValueAtTime(.001, start);
+        gain.gain.linearRampToValueAtTime(.06, start + .025);
+        gain.gain.exponentialRampToValueAtTime(.001, start + .58);
+        oscillator.connect(gain).connect(storyAudio.destination);
+        oscillator.start(start);
+        oscillator.stop(start + .62);
+      });
+    } catch (_) { /* La historia también funciona si el navegador silencia el audio. */ }
+  }
+
+  function burstFlowers() {
+    const symbols = ['🌸', '🌼', '💗', '✨', '🫧', '🌷'];
+    for (let i = 0; i < 38; i++) {
+      const particle = document.createElement('span');
+      const angle = Math.PI * 2 * i / 38 + (i % 3) * .1;
+      const distance = 150 + (i % 8) * 31;
+      particle.className = 'gift-particle';
+      particle.textContent = symbols[i % symbols.length];
+      particle.style.setProperty('--x', Math.cos(angle) * distance + 'px');
+      particle.style.setProperty('--y', Math.sin(angle) * distance + 'px');
+      particle.style.setProperty('--r', ((i % 2 ? 1 : -1) * (90 + i * 12)) + 'deg');
+      particle.style.animationDelay = (i % 5) * .035 + 's';
+      valentineStory.appendChild(particle);
+      storyTimers.push(setTimeout(() => particle.remove(), 3100));
+    }
+  }
+
+  function deliverFlowers() {
+    valentineStory.classList.remove('playing');
+    valentineStory.classList.add('delivered');
+    loveHint.textContent = '💐 Entrega completada. Las flores siempre pueden volver a llegar.';
+    burstFlowers();
+  }
+
+  function playDeliveryStory() {
+    clearStoryTimers();
+    valentineStory.classList.remove('delivered', 'playing');
+    storyWait.classList.remove('impatient');
+    storyTitle.textContent = 'Tu regalo ya viene, Kimberly';
+    storyStatus.textContent = 'Bob está intentando guardar el secreto mientras Sandy prepara la entrega.';
+    waitCaption.textContent = 'Patricio espera pacientemente… por ahora.';
+    waitTime.textContent = 'Tiempo estimado: unos segunditos';
+    setDeliveryStop(0);
+    void valentineStory.offsetWidth;
+    valentineStory.classList.add('playing');
+    prepareDeliveryChime(9.15);
+
+    storyTimers.push(setTimeout(() => {
+      storyStatus.textContent = 'Sandy ya viene volando con la sorpresa. Bob insiste en que todo está bajo control.';
+      waitCaption.textContent = 'Todavía está tranquilo. Excelente señal.';
+      waitTime.textContent = 'Estado: regalo en el aire';
+      setDeliveryStop(1);
+    }, 1700));
+
+    storyTimers.push(setTimeout(() => {
+      storyTitle.textContent = 'Eh… hubo un pequeño problema';
+      storyStatus.textContent = 'Unas vieiras se comieron los globos. Sandy está armando un plan B bastante más grande.';
+      waitCaption.textContent = 'Patricio empieza a sospechar que algo pasa…';
+      waitTime.textContent = 'Retraso inesperado: culpa de las vieiras';
+      setDeliveryStop(2);
+    }, 3900));
+
+    storyTimers.push(setTimeout(() => {
+      storyWait.classList.add('impatient');
+      storyTitle.textContent = '¿Esto era todo?';
+      storyStatus.textContent = 'Kimberly, no te enojes como Patricio. Te prometo que el verdadero regalo sí existe.';
+      waitCaption.textContent = 'Nivel de paciencia de Patricio: peligrosamente bajo.';
+      waitTime.textContent = 'Por favor, espera solo un poquito más…';
+    }, 6100));
+
+    storyTimers.push(setTimeout(() => {
+      storyWait.classList.remove('impatient');
+      storyTitle.textContent = '¡Espera… mira hacia arriba!';
+      storyStatus.textContent = 'Algo enorme acaba de aparecer sobre la Feria del Guante.';
+      waitCaption.textContent = 'La sorpresa por fin llegó.';
+      waitTime.textContent = 'Destino: Kimberly ♥';
+      setDeliveryStop(3);
+    }, 8100));
+
+    storyTimers.push(setTimeout(deliverFlowers, 9200));
+  }
+
+  function openValentineStory() {
+    storyPreviousFocus = document.activeElement;
+    valentineStory.classList.add('show');
+    valentineStory.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('valentine-open');
+    loveHint.textContent = '🎈 La entrega salió de Fondo de Bikini…';
+    storyClose.focus();
+    playDeliveryStory();
+  }
+
+  function closeValentineStory() {
+    clearStoryTimers();
+    valentineStory.classList.remove('show', 'playing', 'delivered');
+    valentineStory.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('valentine-open');
+    if (storyPreviousFocus) storyPreviousFocus.focus();
+  }
+
+  giveFlowersBtn.addEventListener('click', openValentineStory);
+  storyClose.addEventListener('click', closeValentineStory);
+  storyAgain.addEventListener('click', playDeliveryStory);
+  valentineStory.addEventListener('click', event => {
+    if (event.target === valentineStory) closeValentineStory();
+  });
+  document.addEventListener('keydown', event => {
+    if (!valentineStory.classList.contains('show')) return;
+    if (event.key === 'Escape') closeValentineStory();
+    if (event.key === 'Tab') {
+      const focusable = valentineStory.classList.contains('delivered')
+        ? [storyClose, storyAgain]
+        : [storyClose];
+      const current = focusable.indexOf(document.activeElement);
+      event.preventDefault();
+      focusable[(current + (event.shiftKey ? -1 : 1) + focusable.length) % focusable.length].focus();
+    }
+  });
+  }
+
+  /* ---------- 8. Mini episodio 2D interactivo ---------- */
+  const toonTrigger = document.getElementById('giveFlowersBtn');
+  const toonStory = document.getElementById('valentineStory');
+  const toonStage = toonStory.querySelector('.toon-stage');
+  const toonTitleCard = toonStory.querySelector('.title-card');
+  const toonClose = document.getElementById('storyClose');
+  const toonSound = document.getElementById('storySound');
+  const toonNext = document.getElementById('storyNext');
+  const toonAgain = document.getElementById('storyAgain');
+  const toonSpeaker = document.getElementById('dialogueSpeaker');
+  const toonText = document.getElementById('dialogueText');
+  const toonAvatar = document.getElementById('speakerAvatar');
+  const toonTimeline = document.getElementById('episodeTimeline');
+  const toonDots = Array.from(document.querySelectorAll('#sceneDots .scene-dot'));
+  const toonLoveHint = document.getElementById('loveHint');
+  toonStory.querySelectorAll('.toon-character > img').forEach(img => {
+    img.addEventListener('error', () => img.parentElement.classList.add('image-failed'));
+  });
+
+  const EPISODE_BEATS = [
+    { speaker:'Narrador', avatar:'🫧', text:'Una historia que comenzó en la Feria del Guante…', duration:1900 },
+    { speaker:'Bob', avatar:'🧽', text:'Kimberly, tengo una sorpresa enorme para ti. Pero todavía no puedes verla.', duration:3500 },
+    { speaker:'Patricio', avatar:'⭐', text:'¿Enorme? ¿Más enorme que un chocolate enorme? ¡Dámela, dámela, dámela!', duration:3300 },
+    { speaker:'Sandy', avatar:'🐿️', text:'¡Entrega especial acercándose! Un corazón volador para Kimberly.', duration:3700 },
+    { speaker:'Narrador', avatar:'🫧', text:'Pequeño problema: unas vieiras se comieron los globos. Todos los globos.', duration:3700 },
+    { speaker:'Patricio', avatar:'⭐', text:'¿ENTONCES ESTE ERA MI REGALO? Mi paciencia se está acabando, Bob…', duration:3500 },
+    { speaker:'Bob', avatar:'🧽', text:'¡Espera! No te enojes todavía. Kimberly… mira hacia arriba.', duration:3400 },
+    { speaker:'Josué', avatar:'♥', text:'Flores para ti, Kimberly.', duration:0 }
+  ];
+
+  let toonScene = 0;
+  let toonTimers = [];
+  let toonPreviousFocus = null;
+  let toonAudioContext = null;
+  let toonSoundOn = true;
+
+  function clearToonTimers() {
+    toonTimers.forEach(clearTimeout);
+    toonTimers = [];
+  }
+
+  function scheduleToon(callback, delay) {
+    const id = setTimeout(callback, delay);
+    toonTimers.push(id);
+    return id;
+  }
+
+  function tone(frequency, duration=.14, volume=.035, type='sine', delay=0) {
+    if (!toonSoundOn || !toonAudioContext) return;
+    try {
+      const start = toonAudioContext.currentTime + delay;
+      const oscillator = toonAudioContext.createOscillator();
+      const gain = toonAudioContext.createGain();
+      oscillator.type = type;
+      oscillator.frequency.setValueAtTime(frequency, start);
+      gain.gain.setValueAtTime(.001, start);
+      gain.gain.linearRampToValueAtTime(volume, start + .015);
+      gain.gain.exponentialRampToValueAtTime(.001, start + duration);
+      oscillator.connect(gain).connect(toonAudioContext.destination);
+      oscillator.start(start);
+      oscillator.stop(start + duration + .03);
+    } catch (_) {}
+  }
+
+  function playToonSound(scene) {
+    if (!toonSoundOn) return;
+    if (scene === 0) { tone(392,.25,.04); tone(523,.3,.04,'sine',.16); }
+    if (scene === 1) { tone(659,.09,.025); tone(784,.11,.025,'triangle',.1); }
+    if (scene === 2) { tone(330,.08,.03,'square'); tone(392,.08,.03,'square',.1); tone(494,.1,.03,'square',.2); }
+    if (scene === 3) { [523,659,784].forEach((n,i)=>tone(n,.28,.025,'sine',i*.13)); }
+    if (scene === 4) { tone(150,.22,.065,'sawtooth',.45); tone(110,.18,.05,'square',.7); }
+    if (scene === 5) { tone(92,.45,.045,'sawtooth'); tone(82,.45,.04,'sawtooth',.5); }
+    if (scene === 6) { [262,330,392,523].forEach((n,i)=>tone(n,.36,.03,'sine',i*.24)); }
+    if (scene === 7) { [523,659,784,1047].forEach((n,i)=>tone(n,.62,.055,'sine',i*.13)); }
+  }
+
+  function typeToonLine(text) {
+    toonText.textContent = '';
+    const chars = Array.from(text);
+    const step = Math.max(14, Math.min(29, 900 / chars.length));
+    chars.forEach((char, i) => scheduleToon(() => { toonText.textContent += char; }, i * step));
+  }
+
+  function burstToonFlowers() {
+    const symbols = ['🌸','🌼','💗','✨','🫧','🌷'];
+    for (let i=0;i<42;i++) {
+      const particle = document.createElement('span');
+      const angle = Math.PI*2*i/42 + (i%3)*.09;
+      const distance = 120 + (i%8)*25;
+      particle.className = 'gift-particle';
+      particle.textContent = symbols[i%symbols.length];
+      particle.style.setProperty('--x',Math.cos(angle)*distance+'px');
+      particle.style.setProperty('--y',Math.sin(angle)*distance+'px');
+      particle.style.setProperty('--r',((i%2?1:-1)*(90+i*12))+'deg');
+      particle.style.animationDelay = (i%6)*.035+'s';
+      toonStage.appendChild(particle);
+      scheduleToon(()=>particle.remove(),3100);
+    }
+  }
+
+  function setToonScene(index, automatic=false) {
+    clearToonTimers();
+    toonScene = Math.max(0,Math.min(index,EPISODE_BEATS.length-1));
+    const beat = EPISODE_BEATS[toonScene];
+
+    toonStory.setAttribute('data-scene',String(toonScene));
+    toonDots.forEach((dot,i)=>dot.classList.toggle('on',i===toonScene));
+    toonTimeline.style.width = (toonScene/(EPISODE_BEATS.length-1)*100)+'%';
+    toonSpeaker.textContent = beat.speaker;
+    toonAvatar.textContent = beat.avatar;
+    typeToonLine(beat.text);
+    playToonSound(toonScene);
+
+    if (toonScene === 0) {
+      toonNext.textContent = 'Comenzar ›';
+    } else {
+      toonNext.textContent = toonScene === 6 ? 'Ver regalo ›' : 'Siguiente ›';
+    }
+
+    if (toonScene === 7) {
+      toonLoveHint.textContent = '💐 Mini episodio completado. Las flores pueden volver a llegar cuando quieras.';
+      burstToonFlowers();
+      toonAgain.focus({preventScroll:true});
+      return;
+    }
+
+    const readingDelay = beat.duration;
+    scheduleToon(()=>setToonScene(toonScene+1,true),readingDelay);
+  }
+
+  function openToonStory() {
+    toonPreviousFocus = document.activeElement;
+    toonStory.classList.add('show');
+    toonStory.setAttribute('aria-hidden','false');
+    document.body.classList.add('valentine-open');
+    toonLoveHint.textContent = '🎬 Reproduciendo el especial desde Fondo de Bikini…';
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) { toonAudioContext = new AudioCtx(); toonAudioContext.resume().catch(()=>{}); }
+    } catch (_) {}
+    toonClose.focus({preventScroll:true});
+    setToonScene(0);
+  }
+
+  function closeToonStory() {
+    clearToonTimers();
+    toonStory.classList.remove('show');
+    toonStory.setAttribute('aria-hidden','true');
+    toonStory.setAttribute('data-scene','0');
+    document.body.classList.remove('valentine-open');
+    toonStage.querySelectorAll('.gift-particle').forEach(p=>p.remove());
+    if (toonAudioContext) { toonAudioContext.close().catch(()=>{}); toonAudioContext=null; }
+    if (toonPreviousFocus) toonPreviousFocus.focus({preventScroll:true});
+  }
+
+  function toggleToonSound() {
+    toonSoundOn = !toonSoundOn;
+    toonSound.textContent = toonSoundOn ? '♪' : '∅';
+    toonSound.setAttribute('aria-pressed',String(toonSoundOn));
+    toonSound.setAttribute('aria-label',toonSoundOn?'Desactivar sonido':'Activar sonido');
+    if (toonSoundOn && toonAudioContext) { toonAudioContext.resume().catch(()=>{}); tone(659,.12,.03); }
+  }
+
+  toonTrigger.addEventListener('click',openToonStory);
+  toonClose.addEventListener('click',closeToonStory);
+  toonSound.addEventListener('click',toggleToonSound);
+  toonNext.addEventListener('click',()=>setToonScene(toonScene+1));
+  toonTitleCard.addEventListener('click',()=>{ if (toonScene===0) setToonScene(1); });
+  toonAgain.addEventListener('click',()=>setToonScene(0));
+  document.addEventListener('keydown',event=>{
+    if (!toonStory.classList.contains('show')) return;
+    if (event.key==='Escape') { closeToonStory(); return; }
+    if ((event.key==='ArrowRight'||event.key==='Enter') && toonScene<7 && document.activeElement!==toonClose && document.activeElement!==toonSound) setToonScene(toonScene+1);
+    if (event.key==='Tab') {
+      const focusable = toonScene===7 ? [toonSound,toonClose,toonAgain] : [toonSound,toonClose,toonNext];
+      const current = focusable.indexOf(document.activeElement);
+      event.preventDefault();
+      focusable[(current+(event.shiftKey?-1:1)+focusable.length)%focusable.length].focus();
+    }
+  });
 </script>
 </body>
 </html>
