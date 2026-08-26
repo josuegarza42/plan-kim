@@ -587,6 +587,21 @@
   .scallop::after { content:"••"; position:absolute; left:29%; top:46%; color:#fff; font-size:clamp(8px,1.5vw,17px); letter-spacing:5px; text-shadow:0 1px 0 #333; }
   .sc1{left:43%;top:17%}.sc2{left:58%;top:9%}.sc3{left:70%;top:27%}
   .comic-impact { position:absolute; z-index:17; left:54%; top:22%; width:25%; aspect-ratio:1; display:grid; place-items:center; opacity:0; background:#ffe85d; clip-path:polygon(50% 0,61% 32%,86% 14%,75% 40%,100% 50%,72% 59%,87% 86%,60% 72%,50% 100%,39% 71%,14% 87%,28% 60%,0 50%,30% 39%,14% 14%,40% 31%); color:#9e275e; font-size:clamp(16px,3vw,40px); font-weight:1000; transform:scale(.1) rotate(-18deg); }
+  .rage-overlay { position:absolute; z-index:19; inset:0; overflow:hidden; opacity:0; visibility:hidden; pointer-events:none; background:radial-gradient(circle at 67% 52%,rgba(255,235,90,.18),rgba(255,35,63,.42) 38%,rgba(57,0,44,.66) 75%); }
+  .rage-overlay::before { content:""; position:absolute; inset:-45%; background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,245,112,.78) 0 2deg,transparent 2deg 11deg); mix-blend-mode:screen; opacity:.46; }
+  .rage-alarm { position:absolute; top:12%; left:50%; min-width:41%; padding:9px 16px; border:4px solid #fff084; border-radius:9px; background:#df164f; box-shadow:0 5px 0 #7c143e,0 0 28px rgba(255,50,66,.72); color:#fffbd1; font-size:clamp(10px,1.5vw,18px); font-weight:1000; letter-spacing:.12em; text-align:center; text-transform:uppercase; transform:translateX(-50%) rotate(-2deg); }
+  .rage-scream { position:absolute; z-index:2; left:4%; right:4%; top:29%; color:#fff7a8; font-size:clamp(25px,5.4vw,69px); font-weight:1000; letter-spacing:-.045em; line-height:.88; text-align:center; text-shadow:0 6px 0 #9b1543,4px 0 0 #9b1543,-4px 0 0 #9b1543,0 15px 30px rgba(38,0,36,.55); transform:rotate(-3deg) scale(.2); }
+  .rage-meter { position:absolute; z-index:3; left:20%; right:20%; top:51%; height:24px; overflow:hidden; border:4px solid #fff8bf; border-radius:999px; background:#42113b; box-shadow:0 5px 0 #1e0a2a; }
+  .rage-meter::before { content:"NIVEL DE FURIA: 9000"; position:absolute; z-index:2; inset:0; display:grid; place-items:center; color:#fff; font-size:9px; font-weight:1000; letter-spacing:.14em; text-shadow:0 1px 2px #54001d; }
+  .rage-meter i { display:block; width:0; height:100%; background:repeating-linear-gradient(135deg,#ffe64f 0 13px,#ff3f57 13px 26px); box-shadow:0 0 18px #ff443f; }
+  .rage-symbol { position:absolute; z-index:4; font-size:clamp(24px,4vw,54px); opacity:0; filter:drop-shadow(0 4px 0 #8d123c); }
+  .rage-symbol.rs1{left:7%;top:19%}.rage-symbol.rs2{right:8%;top:20%}.rage-symbol.rs3{left:14%;top:56%}.rage-symbol.rs4{right:13%;top:58%}.rage-symbol.rs5{left:43%;top:64%}
+  .rage-real-frame { position:absolute; z-index:31; left:30%; top:14%; width:40%; padding:7px 7px 25px; border:4px solid #fff6a7; border-radius:11px; background:#fff7cf; box-shadow:0 20px 55px rgba(35,0,34,.66),0 0 0 5px #e53362; opacity:0; transform:scale(.35) rotate(var(--frame-tilt)); pointer-events:none; }
+  .rage-real-frame img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:5px; }
+  .rage-real-frame span { position:absolute; left:8px; right:8px; bottom:6px; color:#761b46; font-size:8px; font-weight:1000; letter-spacing:.08em; text-align:center; text-transform:uppercase; }
+  .rage-frame-1 { --frame-tilt:-5deg; --frame-delay:.12s; }
+  .rage-frame-2 { --frame-tilt:4deg; --frame-delay:1.12s; }
+  .rage-frame-3 { --frame-tilt:-2deg; --frame-delay:2.12s; }
   .sea-shadow { position:absolute; z-index:6; left:26%; right:26%; top:6%; height:12%; border-radius:50%; background:rgba(4,17,54,.45); filter:blur(12px); opacity:0; transform:scale(.2); }
   .giant-heart { position:absolute; z-index:12; left:34%; top:-70%; width:32%; opacity:0; filter:drop-shadow(0 25px 20px rgba(30,3,45,.35)); }
   .giant-heart svg { display:block; width:100%; overflow:visible; }
@@ -617,9 +632,9 @@
 
   /* Escenas: cada estado mueve las piezas como un pequeño episodio. */
   .valentine-story[data-scene="0"] .title-card { opacity:1; visibility:visible; animation:titlePop .7s cubic-bezier(.2,1.15,.3,1); }
-  .valentine-story:not([data-scene="0"]):not([data-scene="7"]) .dialogue-panel { opacity:1; transform:none; }
-  .valentine-story[data-scene="1"] .bob-toon,.valentine-story[data-scene="2"] .bob-toon,.valentine-story[data-scene="3"] .bob-toon,.valentine-story[data-scene="4"] .bob-toon,.valentine-story[data-scene="5"] .bob-toon,.valentine-story[data-scene="6"] .bob-toon { opacity:1; transform:none; animation:bobIdle 1.6s ease-in-out infinite; }
-  .valentine-story[data-scene="1"] .patrick-toon,.valentine-story[data-scene="2"] .patrick-toon,.valentine-story[data-scene="3"] .patrick-toon,.valentine-story[data-scene="4"] .patrick-toon,.valentine-story[data-scene="5"] .patrick-toon,.valentine-story[data-scene="6"] .patrick-toon { opacity:1; transform:none; animation:patrickIdle 1.9s .2s ease-in-out infinite; }
+  .valentine-story:not([data-scene="0"]):not([data-scene="8"]) .dialogue-panel { opacity:1; transform:none; }
+  .valentine-story[data-scene="1"] .bob-toon,.valentine-story[data-scene="2"] .bob-toon,.valentine-story[data-scene="3"] .bob-toon,.valentine-story[data-scene="4"] .bob-toon,.valentine-story[data-scene="5"] .bob-toon,.valentine-story[data-scene="6"] .bob-toon,.valentine-story[data-scene="7"] .bob-toon { opacity:1; transform:none; animation:bobIdle 1.6s ease-in-out infinite; }
+  .valentine-story[data-scene="1"] .patrick-toon,.valentine-story[data-scene="2"] .patrick-toon,.valentine-story[data-scene="3"] .patrick-toon,.valentine-story[data-scene="4"] .patrick-toon,.valentine-story[data-scene="5"] .patrick-toon,.valentine-story[data-scene="6"] .patrick-toon,.valentine-story[data-scene="7"] .patrick-toon { opacity:1; transform:none; animation:patrickIdle 1.9s .2s ease-in-out infinite; }
   .valentine-story[data-scene="1"] .bob-arm { animation:waveArm .65s ease-in-out 4 alternate; }
   .valentine-story[data-scene="1"] .frame-bob { animation:realFrameFlash 1.65s .12s ease both; }
   .valentine-story[data-scene="2"] .patrick-arm { animation:happyArms .45s ease-in-out 6 alternate; }
@@ -634,13 +649,25 @@
   .valentine-story[data-scene="5"] .patrick-toon { animation:patrickRage .22s linear infinite; filter:drop-shadow(0 0 20px #ff5f74); }
   .valentine-story[data-scene="5"] .patrick-brow { transform:rotate(18deg); }
   .valentine-story[data-scene="5"] .bob-toon { animation:bobNervous .16s linear infinite; }
-  .valentine-story[data-scene="6"] .sea-shadow { opacity:1; animation:shadowGrow 2.3s ease-in forwards; }
-  .valentine-story[data-scene="6"] .giant-heart { opacity:1; animation:heartLanding 2.5s cubic-bezier(.18,.85,.28,1.08) forwards; }
-  .valentine-story[data-scene="6"] .bob-toon,.valentine-story[data-scene="6"] .patrick-toon { animation:lookUp .65s ease-in-out infinite alternate; }
-  .valentine-story[data-scene="6"] .frame-heart { animation:realFrameFlash 1.65s 1.25s ease both; }
-  .valentine-story[data-scene="7"] .final-scene { opacity:1; visibility:visible; animation:finalWash .75s ease both; }
-  .valentine-story[data-scene="7"] .final-bouquet { animation:bouquetArrives 1s .25s cubic-bezier(.16,1.2,.3,1) forwards,bouquetFloat 3s 1.4s ease-in-out infinite; }
-  .valentine-story[data-scene="7"] .final-copy { animation:copyArrives .8s .72s ease forwards; }
+  .valentine-story[data-scene="6"] .toon-world { animation:rageWorld .13s steps(2,end) infinite; }
+  .valentine-story[data-scene="6"] .rage-overlay { opacity:1; visibility:visible; animation:rageFlash .34s linear infinite alternate; }
+  .valentine-story[data-scene="6"] .rage-overlay::before { animation:rageRays 2.4s linear infinite; }
+  .valentine-story[data-scene="6"] .rage-alarm { animation:rageAlarm .22s linear infinite alternate; }
+  .valentine-story[data-scene="6"] .rage-scream { animation:rageScream .72s cubic-bezier(.16,1.45,.3,1) both; }
+  .valentine-story[data-scene="6"] .rage-meter i { animation:rageFill .8s .2s cubic-bezier(.2,.9,.3,1) forwards; }
+  .valentine-story[data-scene="6"] .rage-symbol { animation:rageSymbol .65s cubic-bezier(.2,1.5,.3,1) infinite alternate; }
+  .valentine-story[data-scene="6"] .rage-symbol:nth-of-type(2){animation-delay:.08s}.valentine-story[data-scene="6"] .rage-symbol:nth-of-type(3){animation-delay:.15s}.valentine-story[data-scene="6"] .rage-symbol:nth-of-type(4){animation-delay:.22s}.valentine-story[data-scene="6"] .rage-symbol:nth-of-type(5){animation-delay:.3s}
+  .valentine-story[data-scene="6"] .rage-real-frame { animation:rageFramePop 1.18s var(--frame-delay) cubic-bezier(.18,1.2,.28,1) both; }
+  .valentine-story[data-scene="6"] .patrick-toon { z-index:22; right:29%; width:34%; animation:patrickMeltdown .11s linear infinite; filter:saturate(2.2) contrast(1.18) drop-shadow(0 0 9px #fff06a) drop-shadow(0 0 35px #ff244f); }
+  .valentine-story[data-scene="6"] .bob-toon { animation:bobEscape 1.05s cubic-bezier(.3,.7,.25,1) infinite; }
+  .valentine-story[data-scene="6"] .dialogue-panel { border-color:#ffec65; background:rgba(116,8,53,.94); animation:dialogueRage .14s linear infinite; }
+  .valentine-story[data-scene="7"] .sea-shadow { opacity:1; animation:shadowGrow 2.3s ease-in forwards; }
+  .valentine-story[data-scene="7"] .giant-heart { opacity:1; animation:heartLanding 2.5s cubic-bezier(.18,.85,.28,1.08) forwards; }
+  .valentine-story[data-scene="7"] .bob-toon,.valentine-story[data-scene="7"] .patrick-toon { animation:lookUp .65s ease-in-out infinite alternate; }
+  .valentine-story[data-scene="7"] .frame-heart { animation:realFrameFlash 1.65s 1.25s ease both; }
+  .valentine-story[data-scene="8"] .final-scene { opacity:1; visibility:visible; animation:finalWash .75s ease both; }
+  .valentine-story[data-scene="8"] .final-bouquet { animation:bouquetArrives 1s .25s cubic-bezier(.16,1.2,.3,1) forwards,bouquetFloat 3s 1.4s ease-in-out infinite; }
+  .valentine-story[data-scene="8"] .final-copy { animation:copyArrives .8s .72s ease forwards; }
 
   @keyframes bubblesUp{to{background-position:0 -184px}}
   @keyframes wheelTurn{to{transform:rotate(360deg)}}
@@ -657,6 +684,17 @@
   @keyframes impactPop{0%{transform:scale(.1) rotate(-18deg)}75%{transform:scale(1.16) rotate(4deg)}100%{transform:scale(1) rotate(0)}}
   @keyframes patrickRage{25%{transform:translateX(-5px) rotate(-2deg)}75%{transform:translateX(5px) rotate(2deg)}}
   @keyframes bobNervous{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+  @keyframes rageWorld{0%{filter:hue-rotate(-12deg) saturate(1.4);transform:translate(-2px,1px)}100%{filter:hue-rotate(18deg) saturate(1.8);transform:translate(2px,-1px)}}
+  @keyframes rageFlash{to{background-color:rgba(255,18,56,.2)}}
+  @keyframes rageRays{to{transform:rotate(360deg)}}
+  @keyframes rageAlarm{to{transform:translateX(-50%) rotate(2deg) scale(1.04)}}
+  @keyframes rageScream{0%{opacity:0;transform:rotate(-8deg) scale(.2)}68%{opacity:1;transform:rotate(3deg) scale(1.12)}100%{opacity:1;transform:rotate(-2deg) scale(1)}}
+  @keyframes rageFill{70%{width:86%}82%{width:72%}100%{width:100%}}
+  @keyframes rageSymbol{0%{opacity:.2;transform:translateY(16px) scale(.4) rotate(-18deg)}100%{opacity:1;transform:translateY(-13px) scale(1.18) rotate(13deg)}}
+  @keyframes rageFramePop{0%{opacity:0;transform:scale(.3) rotate(calc(var(--frame-tilt) - 8deg))}18%,72%{opacity:1;transform:scale(1) rotate(var(--frame-tilt))}100%{opacity:0;transform:scale(1.08) rotate(calc(var(--frame-tilt) + 5deg))}}
+  @keyframes patrickMeltdown{0%{transform:translate(-7px,-1px) rotate(-3deg) scale(1.03)}25%{transform:translate(5px,4px) rotate(3deg) scale(1.08)}50%{transform:translate(-3px,-5px) rotate(2deg) scale(1.05)}75%{transform:translate(7px,2px) rotate(-2deg) scale(1.1)}100%{transform:translate(-7px,-1px) rotate(-3deg) scale(1.03)}}
+  @keyframes bobEscape{0%,12%{transform:translateX(0) rotate(0)}42%{transform:translateX(-18%) rotate(-10deg)}60%,100%{transform:translateX(-155%) rotate(-18deg)}}
+  @keyframes dialogueRage{25%{transform:translate(-2px,1px) rotate(-.25deg)}75%{transform:translate(2px,-1px) rotate(.25deg)}}
   @keyframes shadowGrow{to{opacity:.75;transform:scale(2.3)}}
   @keyframes heartLanding{0%{top:-70%;transform:scale(.55) rotate(-8deg)}72%{top:8%;transform:scale(1.08) rotate(3deg)}100%{top:4%;transform:scale(1) rotate(0)}}
   @keyframes realFrameFlash{0%{opacity:0;transform:translateX(-50%) scale(.72) rotate(-4deg)}18%,72%{opacity:1;transform:translateX(-50%) scale(1) rotate(1deg)}100%{opacity:0;transform:translateX(-50%) scale(1.04) rotate(2deg)}}
@@ -788,6 +826,12 @@
     .scallop { width:13%; }
     .sc1{left:35%;top:22%}.sc2{left:56%;top:14%}.sc3{left:75%;top:29%}
     .comic-impact { left:47%; top:24%; width:42%; }
+    .rage-alarm { top:14%; min-width:78%; }
+    .rage-scream { top:25%; font-size:clamp(31px,10vw,54px); }
+    .rage-meter { left:10%; right:10%; top:48%; }
+    .rage-real-frame { left:12%; top:18%; width:76%; }
+    .valentine-story[data-scene="6"] .patrick-toon { right:19%; bottom:26%; width:62%; }
+    .rage-symbol.rs1{left:3%;top:23%}.rage-symbol.rs2{right:3%;top:24%}.rage-symbol.rs3{left:5%;top:54%}.rage-symbol.rs4{right:5%;top:56%}.rage-symbol.rs5{left:43%;top:63%}
     .sea-shadow { left:18%; right:18%; top:12%; }
     .giant-heart { left:20%; width:60%; }
     .real-frame { top:15%; width:72%; }
@@ -1418,7 +1462,7 @@
           <p>Solo hay un pequeño detalle: viene volando desde el fondo del mar y, como en aquel San Valentín, puede que se tarde un poquito en llegar…</p>
           <div class="episode-nods" aria-label="Guiños al episodio de San Valentín">
             <span class="episode-nod">🧽 Una sorpresa secreta</span>
-            <span class="episode-nod">⭐ Un poquito de impaciencia</span>
+            <span class="episode-nod">⭐ Una furia completamente razonable*</span>
             <span class="episode-nod">🎈 Un regalo enorme</span>
           </div>
           <button type="button" class="give-flowers" id="giveFlowersBtn" aria-haspopup="dialog" aria-controls="valentineStory">
@@ -1554,7 +1598,7 @@
         </div>
       </div>
       <div class="scene-dots" id="sceneDots" aria-label="Progreso del episodio">
-        <i class="scene-dot on"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i>
+        <i class="scene-dot on"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i><i class="scene-dot"></i>
       </div>
 
       <div class="toon-world" aria-hidden="true">
@@ -1615,6 +1659,15 @@
       </div>
       <div class="scallop sc1" aria-hidden="true"></div><div class="scallop sc2" aria-hidden="true"></div><div class="scallop sc3" aria-hidden="true"></div>
       <div class="comic-impact" aria-hidden="true">¡ÑAM!</div>
+      <div class="rage-overlay" aria-hidden="true">
+        <div class="rage-alarm">⚠ Alerta: estrella enojada ⚠</div>
+        <div class="rage-scream">¡¿Y MI<br>CHOCOLATE?!</div>
+        <div class="rage-meter"><i></i></div>
+        <span class="rage-symbol rs1">💢</span><span class="rage-symbol rs2">💥</span><span class="rage-symbol rs3">‼️</span><span class="rage-symbol rs4">🍫</span><span class="rage-symbol rs5">💢</span>
+      </div>
+      <div class="rage-real-frame rage-frame-1" aria-hidden="true"><img src="assets/valentine-rage-frame-1.jpg" alt=""/><span>Frame real · La furia comienza</span></div>
+      <div class="rage-real-frame rage-frame-2" aria-hidden="true"><img src="assets/valentine-rage-frame-2.jpg" alt=""/><span>Frame real · Patricio exige respuestas</span></div>
+      <div class="rage-real-frame rage-frame-3" aria-hidden="true"><img src="assets/valentine-rage-frame-3.jpg" alt=""/><span>Frame real · Paciencia oficialmente agotada</span></div>
       <div class="sea-shadow" aria-hidden="true"></div>
       <div class="giant-heart" aria-hidden="true"><svg viewBox="0 0 400 380"><path d="M200 355S18 239 18 123C18 21 142-5 200 78 258-5 382 21 382 123c0 116-182 232-182 232z" fill="#ee367e" stroke="#9d245c" stroke-width="12"/><path d="M70 83q55-55 107 5" fill="none" stroke="#ffadd0" stroke-width="20" stroke-linecap="round"/><text x="200" y="208" text-anchor="middle" fill="#fff3a5" font-size="51" font-weight="900">K + J</text></svg></div>
 
@@ -1646,7 +1699,7 @@
           <button type="button" class="story-again" id="storyAgain">↻ Ver el episodio otra vez</button>
         </div>
       </div>
-      <div class="official-credit">Frames del clip oficial · “Valentine's Day” · SpongeBob SquarePants © Nickelodeon</div>
+      <div class="official-credit">Frames de clips oficiales · Patrick Star Official / Paramount+ · SpongeBob SquarePants © Nickelodeon</div>
     </div>
   </div>
 
@@ -2062,9 +2115,12 @@
     { speaker:'Sandy', avatar:'🐿️', text:'¡Entrega especial acercándose! Un corazón volador para Kimberly.', duration:3700 },
     { speaker:'Narrador', avatar:'🫧', text:'Pequeño problema: unas vieiras se comieron los globos. Todos los globos.', duration:3700 },
     { speaker:'Patricio', avatar:'⭐', text:'¿ENTONCES ESTE ERA MI REGALO? Mi paciencia se está acabando, Bob…', duration:3500 },
-    { speaker:'Bob', avatar:'🧽', text:'¡Espera! No te enojes todavía. Kimberly… mira hacia arriba.', duration:3400 },
+    { speaker:'Patricio', avatar:'💢', text:'¡¿CÓMO QUE SE COMIERON LOS GLOBOS?! ¡EXIJO MI CHOCOLATE, MI REGALO Y UN REEMBOLSO POR DAÑOS EMOCIONALES!', duration:6100 },
+    { speaker:'Bob', avatar:'🧽', text:'¡Patricio, bájale como ocho mil niveles! Kimberly… mira hacia arriba.', duration:3400 },
     { speaker:'Josué', avatar:'♥', text:'Flores para ti, Kimberly.', duration:0 }
   ];
+  const FINAL_TOON_SCENE = EPISODE_BEATS.length - 1;
+  const REVEAL_TOON_SCENE = FINAL_TOON_SCENE - 1;
 
   let toonScene = 0;
   let toonTimers = [];
@@ -2108,8 +2164,9 @@
     if (scene === 3) { [523,659,784].forEach((n,i)=>tone(n,.28,.025,'sine',i*.13)); }
     if (scene === 4) { tone(150,.22,.065,'sawtooth',.45); tone(110,.18,.05,'square',.7); }
     if (scene === 5) { tone(92,.45,.045,'sawtooth'); tone(82,.45,.04,'sawtooth',.5); }
-    if (scene === 6) { [262,330,392,523].forEach((n,i)=>tone(n,.36,.03,'sine',i*.24)); }
-    if (scene === 7) { [523,659,784,1047].forEach((n,i)=>tone(n,.62,.055,'sine',i*.13)); }
+    if (scene === 6) { [118,105,94,82,73,65].forEach((n,i)=>tone(n,.22,.052,i%2?'square':'sawtooth',i*.12)); tone(740,.12,.025,'square',.85); tone(520,.12,.025,'square',1.02); }
+    if (scene === 7) { [262,330,392,523].forEach((n,i)=>tone(n,.36,.03,'sine',i*.24)); }
+    if (scene === 8) { [523,659,784,1047].forEach((n,i)=>tone(n,.62,.055,'sine',i*.13)); }
   }
 
   function typeToonLine(text) {
@@ -2152,10 +2209,10 @@
     if (toonScene === 0) {
       toonNext.textContent = 'Comenzar ›';
     } else {
-      toonNext.textContent = toonScene === 6 ? 'Ver regalo ›' : 'Siguiente ›';
+      toonNext.textContent = toonScene === REVEAL_TOON_SCENE ? 'Ver regalo ›' : 'Siguiente ›';
     }
 
-    if (toonScene === 7) {
+    if (toonScene === FINAL_TOON_SCENE) {
       toonLoveHint.textContent = '💐 Mini episodio completado. Las flores pueden volver a llegar cuando quieras.';
       burstToonFlowers();
       toonAgain.focus({preventScroll:true});
@@ -2208,9 +2265,9 @@
   document.addEventListener('keydown',event=>{
     if (!toonStory.classList.contains('show')) return;
     if (event.key==='Escape') { closeToonStory(); return; }
-    if ((event.key==='ArrowRight'||event.key==='Enter') && toonScene<7 && document.activeElement!==toonClose && document.activeElement!==toonSound) setToonScene(toonScene+1);
+    if ((event.key==='ArrowRight'||event.key==='Enter') && toonScene<FINAL_TOON_SCENE && document.activeElement!==toonClose && document.activeElement!==toonSound) setToonScene(toonScene+1);
     if (event.key==='Tab') {
-      const focusable = toonScene===7 ? [toonSound,toonClose,toonAgain] : [toonSound,toonClose,toonNext];
+      const focusable = toonScene===FINAL_TOON_SCENE ? [toonSound,toonClose,toonAgain] : [toonSound,toonClose,toonNext];
       const current = focusable.indexOf(document.activeElement);
       event.preventDefault();
       focusable[(current+(event.shiftKey?-1:1)+focusable.length)%focusable.length].focus();
