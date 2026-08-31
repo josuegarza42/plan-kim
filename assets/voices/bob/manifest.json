@@ -1,0 +1,51 @@
+{
+  "voice_id": "TX3LPaxmHKxFdv7VOQHJ",
+  "source": "ElevenLabs premade voice",
+  "lines": [
+    {
+      "scene": 0,
+      "file": "scene-01.mp3",
+      "text": "Todo empezó en la Feria del Guante, porque Josué quería sacarle una sonrisa a alguien muy especial."
+    },
+    {
+      "scene": 1,
+      "file": "scene-02.mp3",
+      "text": "Kimberly, Josué preparó algo para ti. Dice que es pequeño, pero yo vi el tamaño y no le creo nada."
+    },
+    {
+      "scene": 2,
+      "file": "scene-03.mp3",
+      "text": "¿Para alguien muy especial? Entonces debe ser chocolate. El chocolate también es muy especial para mí."
+    },
+    {
+      "scene": 3,
+      "file": "scene-04.mp3",
+      "text": "¡Ya voy en camino! Kimberly, esto viene con mucho cariño y quizá con demasiados globos."
+    },
+    {
+      "scene": 4,
+      "file": "scene-05.mp3",
+      "text": "Bueno, venía con demasiados globos. A unas vieiras les parecieron un excelente desayuno."
+    },
+    {
+      "scene": 5,
+      "file": "scene-06.mp3",
+      "text": "Bob, dime que eso no era todo. ¡No podemos dejar esperando a Kimberly con las manos vacías!"
+    },
+    {
+      "scene": 6,
+      "file": "scene-07.mp3",
+      "text": "¡¿Las vieiras se comieron la sorpresa?! ¡Nadie arruina un detalle bonito para Kimberly! Y tampoco se olviden de mi chocolate."
+    },
+    {
+      "scene": 7,
+      "file": "scene-08.mp3",
+      "text": "Tranquilo, Patricio. Josué tenía un plan B. Kimberly, mira hacia arriba. Esto es para ti."
+    },
+    {
+      "scene": 8,
+      "file": "scene-09.mp3",
+      "text": "Y esto último viene de parte de Josué: Kimberly, me importas mucho y me encanta verte sonreír. Estas flores son para ti."
+    }
+  ]
+}
